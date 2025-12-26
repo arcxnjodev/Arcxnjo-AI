@@ -89,151 +89,27 @@
                 color: #fff !important;
             }
 
-        /* Chat estilo Grok */
-        #chat-container {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 400px;
-            height: 650px;
-            background-color: #111111;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            display: none;
-            flex-direction: column;
-            z-index: 9999;
-            border: 1px solid #333;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        #chat-header {
-            background: linear-gradient(135deg, #5865F2, #7289da);
-            padding: 20px;
-            border-radius: 24px 24px 0 0;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        #chat-close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-            font-size: 1.8rem;
-            color: white;
-            opacity: 0.8;
-        }
-
-        #chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background-color: #0a0a0a;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .message {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            max-width: 90%;
-        }
-
-            .message.bot {
-                align-self: flex-start;
-            }
-
-            .message.user {
-                align-self: flex-end;
-                flex-direction: row-reverse;
-            }
-
-        .bubble {
-            padding: 14px 18px;
-            border-radius: 20px;
-            line-height: 1.5;
-            font-size: 1rem;
-        }
-
-            .bubble.bot {
-                background-color: #1e1e1e;
-                border-bottom-left-radius: 4px;
-                color: #e0e0e0;
-            }
-
-            .bubble.user {
-                background-color: #5865F2;
-                color: white;
-                border-bottom-right-radius: 4px;
-            }
-
-        .avatar {
+        /* Emoji animado personalizado */
+        .custom-emoji {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            background-color: #5865F2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            flex-shrink: 0;
+            vertical-align: middle;
+            margin-left: 8px;
         }
 
-        #chat-input-area {
-            padding: 20px;
-            background-color: #111111;
-            border-top: 1px solid #333;
+        .custom-emoji-large {
+            width: 80px;
+            height: 80px;
+            vertical-align: middle;
+            margin-left: 15px;
         }
-
-        #chat-input {
-            width: 100%;
-            background-color: #222222;
-            border: none;
-            color: white;
-            padding: 16px 20px;
-            border-radius: 30px;
-            font-size: 1rem;
-        }
-
-            #chat-input:focus {
-                outline: none;
-                background-color: #2a2a2a;
-            }
-
-        /* Botão flutuante */
-        #chat-float-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #5865F2, #7289da);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            box-shadow: 0 8px 30px rgba(88, 101, 242, 0.8);
-            cursor: pointer;
-            z-index: 10000;
-            transition: all 0.3s ease;
-        }
-
-            #chat-float-btn:hover {
-                transform: scale(1.15);
-            }
     </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar">
 
     <header class="py-3 shadow-sm fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
-            <h1 class="h4 mb-0 fw-bold">ARCXNJO AI 🤖</h1>
+            <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
             <nav id="navbar">
                 <a href="#hero" class="mx-3">Início</a>
                 <a href="#sobre" class="mx-3">Sobre</a>
@@ -247,8 +123,8 @@
     <section id="hero" class="hero text-center">
         <div id="particles-js"></div>
         <div class="container position-relative">
-            <h2 class="display-2 fw-bold mb-4" data-aos="fade-up">ARCXNJO AI</h2>
-            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="200">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!'</p>
+            <h2 class="display-2 fw-bold mb-4" data-aos="fade-up">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji-large"></h2>
+            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="200">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
             <p class="fs-5 mb-5 opacity-80" data-aos="fade-up" data-aos-delay="400">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
                target="_blank" class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="600">
@@ -262,7 +138,7 @@
             <h3 class="text-center mb-5 fw-bold" data-aos="fade-up">Sobre o ARCXNJO AI</h3>
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <p class="lead">Desenvolvido com as melhores IAs do momento (Grok, GPT-4o, Claude, Flux, etc.), o ARCXNJO AI 🤖 transforma seu servidor em um espaço inteligente e divertido.</p>
+                    <p class="lead">Desenvolvido com as melhores IAs do momento (Grok, GPT-4o, Claude, Flux, etc.), o ARCXNJO AI transforma seu servidor em um espaço inteligente e divertido.</p>
                     <p>Veloz, seguro (sem logs de conversas) e cheio de recursos exclusivos para engajar sua comunidade.</p>
                 </div>
             </div>
@@ -336,8 +212,8 @@
         <div class="container">
             <h3 class="mb-5 fw-bold" data-aos="fade-up">Junte-se à Comunidade</h3>
             <p class="fs-4" data-aos="fade-up" data-aos-delay="200">
-                <i class="fab fa-discord"></i> Suporte: <a href="https://discord.gg/ARCXNJOAI">https://discord.gg/8fenREhz</a><br>
-                <i class="fab fa-github"></i> GitHub: <a href="https://github.com/ArcxnjoDEV">https://github.com/arcxnjodev</a>
+                <i class="fab fa-discord"></i> Suporte: <a href="https://discord.gg/SEU_LINK">discord.gg/seulink</a><br>
+                <i class="fab fa-github"></i> GitHub: <a href="https://github.com/seuusuario">github.com/seuusuario</a>
             </p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
                target="_blank" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="400">
@@ -347,32 +223,10 @@
     </section>
 
     <footer class="py-4 text-center">
-        <small>© 2025 ARCXNJO AI 🤖 – Feito com ❤️ e Inteligência Artificial</small>
+        <small>© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
     </footer>
 
-    <!-- Botão flutuante para abrir o chat -->
-    <div id="chat-float-btn" onclick="toggleChat()">
-        <i class="fas fa-comment-dots"></i>
-    </div>
-
-    <!-- Chat estilo Grok -->
-    <div id="chat-container">
-        <div id="chat-header">
-            ARCXNJO AI 🤖
-            <span id="chat-close" onclick="toggleChat()">×</span>
-        </div>
-        <div id="chat-messages">
-            <div class="message bot">
-                <div class="avatar">🤖</div>
-                <div class="bubble bot">Olá! Eu sou o ARCXNJO AI. Em que posso ajudar você hoje?</div>
-            </div>
-        </div>
-        <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Digite sua mensagem aqui..." autocomplete="off" />
-        </div>
-    </div>
-
-    <!-- Scripts -->
+    <!-- Scripts originais -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -392,72 +246,6 @@
                 detect_on: "canvas",
                 events: { onhover: { enable: true, mode: "repulse" } }
             }
-        });
-
-        function toggleChat() {
-            const container = document.getElementById('chat-container');
-            container.style.display = (container.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        const input = document.getElementById('chat-input');
-        const messages = document.getElementById('chat-messages');
-
-        function addMessage(text, sender) {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('message', sender);
-
-            if (sender === 'bot') {
-                msgDiv.innerHTML = `<div class="avatar">🤖</div><div class="bubble bot">${text}</div>`;
-            } else {
-                msgDiv.innerHTML = `<div class="bubble user">${text}</div>`;
-            }
-
-            messages.appendChild(msgDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }
-
-        async function sendMessage() {
-            const text = input.value.trim();
-            if (!text) return;
-
-            addMessage(text, 'user');
-            input.value = '';
-
-            const typing = document.createElement('div');
-            typing.classList.add('message', 'bot');
-            typing.innerHTML = `<div class="avatar">🤖</div><div class="bubble bot"><i>ARCXNJO AI está pensando...</i></div>`;
-            messages.appendChild(typing);
-            messages.scrollTop = messages.scrollHeight;
-
-            try {
-                const response = await fetch('http://localhost:11434/api/generate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        model: 'gpt-oss:20b-cloud',
-                        prompt: text,
-                        stream: false
-                    })
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(errorText || 'Modelo não encontrado ou erro no Ollama');
-                }
-
-                const data = await response.json();
-                const reply = data.response || 'Sem resposta do modelo.';
-
-                messages.removeChild(typing);
-                addMessage(reply, 'bot');
-            } catch (error) {
-                messages.removeChild(typing);
-                addMessage('⚠️ Erro ao conectar com a IA local.<br><br>Possíveis causas:<br>• O modelo "gpt-oss:20b-cloud" não está instalado (rode "ollama pull gpt-oss:20b-cloud" no terminal).<br>• Ollama não está rodando (rode "ollama serve").<br>• Nome do modelo está errado (verifique com "ollama list").<br><br>Enquanto isso, aqui vai uma resposta simulada: "Oi! Estou aqui pra ajudar, mas a IA local não está disponível no momento."', 'bot');
-            }
-        }
-
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
         });
     </script>
 

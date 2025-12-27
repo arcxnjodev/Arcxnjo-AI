@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Mesmo head -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARCXNJO AI - Comandos</title>
@@ -9,17 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { background-color: #0a0a0a; color: #e0e0e0; min-height: 100vh; }
+        body { background-color: #0a0a0a; color: #e0e0e0; min-height: 100vh; overflow-x: hidden; }
         header, footer { background-color: #111; }
         .main-section {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://c1.wallpaperflare.com/preview/843/461/88/coding-code-programming-screen.jpg') center/cover no-repeat;
             min-height: 100vh;
             padding-top: 120px;
+            display: flex;
+            align-items: center;
         }
         code { background: #222; color: #7cffc4; padding: 4px 8px; border-radius: 6px; }
-        nav a { color: #bbb !important; }
+        nav a { color: #bbb !important; transition: color 0.3s; }
         nav a:hover { color: #fff !important; }
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
+        .command-list { max-width: 800px; margin: 0 auto; }
+        .command-list li { margin-bottom: 20px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -37,16 +40,41 @@
         </div>
     </header>
 
-    <section class="main-section">
+    <section class="main-section text-center">
         <div class="container">
-            <h3 class="text-center mb-5 fw-bold">Exemplos de Comandos</h3>
-            <ul class="list-group list-group-flush w-75 mx-auto">
-                <li class="list-group-item bg-dark border-secondary"><code>/chat [pergunta]</code> – Conversa com IA</li>
-                <li class="list-group-item bg-dark border-secondary"><code>/imagem [descrição]</code> – Gera imagem</li>
-                <li class="list-group-item bg-dark border-secondary"><code>/meme [texto]</code> – Cria meme personalizado</li>
-                <li class="list-group-item bg-dark border-secondary"><code>/pesquisar [tópico]</code> – Busca na web</li>
-                <li class="list-group-item bg-dark border-secondary"><code>/comandos </code> – todos os comandos</li>
+            <h3 class="mb-5 fw-bold">Comandos do ARCXNJO AI</h3>
+            <p class="mb-5 fs-5">Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).</p>
+            <ul class="command-list list-unstyled">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong><code>/chat [pergunta]</code></strong><br>
+                    Conversa com a IA avançada (Grok, GPT-4o, Claude, Flux etc.). Respostas inteligentes e contextualizadas em tempo real.
+                </li>
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong><code>/imagem [descrição]</code></strong><br>
+                    Gera imagens incríveis com IA a partir da sua descrição. Suporta vários estilos e modelos avançados.
+                </li>
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong><code>/meme [texto superior] | [texto inferior]</code></strong><br>
+                    Cria memes personalizados com templates populares. Use "|" para separar texto superior e inferior.
+                </li>
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong><code>/pesquisar [tópico]</code></strong><br>
+                    Pesquisa na web em tempo real (notícias, clima, informações gerais) usando Serper API.
+                </li>
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong><code>/ajuda</code> ou <code>/comandos</code></strong><br>
+                    Mostra a lista completa de comandos disponíveis.
+                </li>
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong>Análise de arquivos</strong><br>
+                    Envie arquivos (código, documentos, imagens até 100MB, vídeos até 30MB) e o bot analisa automaticamente (explica código, descreve imagens/vídeos).
+                </li>
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                    <strong>Reações automáticas</strong><br>
+                    O bot reage com emojis inteligentes às mensagens do servidor (diversão e interação natural).
+                </li>
             </ul>
+            <p class="mt-5">Todos os comandos são slash commands (/) e funcionam em servidores e DMs!</p>
         </div>
     </section>
 

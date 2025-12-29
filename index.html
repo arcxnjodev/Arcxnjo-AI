@@ -176,6 +176,8 @@ const music = document.getElementById('bg-music');
 const icon = document.getElementById('music-icon');
 const volumeSlider = document.getElementById('volume-slider');
 
+music.volume = 0.2;
+    
 enterScreen.addEventListener('click', () => {
     enterScreen.style.opacity = "0";
     setTimeout(() => { enterScreen.style.display = "none"; }, 1000);
@@ -253,5 +255,6 @@ changeLanguage(savedLang);
 
 </body>
 </html>
+
 
 

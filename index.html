@@ -32,6 +32,7 @@
         nav a:hover { color: #fff !important; }
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
         .custom-emoji-large { width: 80px; height: 80px; vertical-align: middle; margin-left: 15px; }
+        #language-switcher { background: #222; border: none; color: white; padding: 8px; border-radius: 8px; margin-right: 20px; }
     </style>
 </head>
 <body>
@@ -39,31 +40,38 @@
     <header class="py-3 shadow-sm fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
-            <nav>
-                <a href="index.html" class="mx-3">Início</a>
-                <a href="sobre.html" class="mx-3">Sobre</a>
-                <a href="funcionalidades.html" class="mx-3">Funcionalidades</a>
-                <a href="comandos.html" class="mx-3">Comandos</a>
-                <a href="contato.html" class="mx-3">Contato</a>
-            </nav>
+            <div class="d-flex align-items-center">
+                <select id="language-switcher" onchange="changeLanguage(this.value)">
+                    <option value="pt">🇧🇷 Português</option>
+                    <option value="en">🇺🇸 English</option>
+                    <option value="es">🇪🇸 Español</option>
+                </select>
+                <nav>
+                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
+                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
+                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
+                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
+                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section class="hero text-center" data-aos="fade-up" data-aos-duration="1500">
+    <section class="hero text-center">
         <div id="particles-js"></div>
         <div class="container position-relative">
             <h2 class="display-2 fw-bold mb-4" data-aos="fade-up" data-aos-delay="200">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji-large"></h2>
-            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="400">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
-            <p class="fs-5 mb-5 opacity-80" data-aos="fade-up" data-aos-delay="600">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
+            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="400" data-i18n="subtitle">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
+            <p class="fs-5 mb-5 opacity-80" data-aos="fade-up" data-aos-delay="600" data-i18n="description">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands" 
-               target="_blank" class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
+               target="_blank" class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800" data-i18n="invite">
                 <i class="fab fa-discord me-2"></i> Convidar o Bot Agora
             </a>
         </div>
     </section>
 
     <footer class="py-4 text-center">
-        <small>© 2025 ARCXNJO AI <img src="https://emoji.discadia.com/emojis/0657444b-e37c-473e-ae86-1d105aa0a443.GIF" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
+        <small data-i18n="footer">© 2025 ARCXNJO AI <img src="https://emoji.discadia.com/emojis/0657444b-e37c-473e-ae86-1d105aa0a443.GIF" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -86,6 +94,55 @@
                 events: { onhover: { enable: true, mode: "repulse" } }
             }
         });
+
+        // Traduções
+        const translations = {
+            pt: {
+                inicio: "Início",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contato",
+                subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
+                description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
+                invite: "Convidar o Bot Agora",
+                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
+            },
+            en: {
+                inicio: "Home",
+                sobre: "About",
+                funcionalidades: "Features",
+                comandos: "Commands",
+                contato: "Contact",
+                subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
+                description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
+                invite: "Add the Bot Now",
+                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
+            },
+            es: {
+                inicio: "Inicio",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contacto",
+                subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
+                description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
+                invite: "Invitar al Bot Ahora",
+                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                el.textContent = translations[lang][el.dataset.i18n] || el.textContent;
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        // Carrega idioma salvo ou default PT
+        const savedLang = localStorage.getItem('language') || 'pt';
+        document.getElementById('language-switcher').value = savedLang;
+        changeLanguage(savedLang);
     </script>
 </body>
 </html>

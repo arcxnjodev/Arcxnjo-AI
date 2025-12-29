@@ -25,6 +25,7 @@
         nav a { color: #bbb !important; }
         nav a:hover { color: #fff !important; }
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
+        #language-switcher { background: #222; border: none; color: white; padding: 8px 12px; border-radius: 8px; font-size: 1rem; margin-right: 20px; }
     </style>
 </head>
 <body>
@@ -32,36 +33,103 @@
     <header class="py-3 shadow-sm fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
-            <nav>
-                <a href="index.html" class="mx-3">Início</a>
-                <a href="sobre.html" class="mx-3">Sobre</a>
-                <a href="funcionalidades.html" class="mx-3">Funcionalidades</a>
-                <a href="comandos.html" class="mx-3">Comandos</a>
-                <a href="contato.html" class="mx-3">Contato</a>
-            </nav>
+            <div class="d-flex align-items-center">
+                <select id="language-switcher" onchange="changeLanguage(this.value)">
+                    <option value="pt">
+                        <img src="https://flagcdn.com/20x15/br.png" alt="BR" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Português
+                    </option>
+                    <option value="en">
+                        <img src="https://flagcdn.com/20x15/us.png" alt="US" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> English
+                    </option>
+                    <option value="es">
+                        <img src="https://flagcdn.com/20x15/es.png" alt="ES" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Español
+                    </option>
+                </select>
+                <nav>
+                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
+                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
+                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
+                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
+                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section class="main-section text-center" data-aos="fade-up" data-aos-duration="1500">
+    <section class="main-section text-center">
         <div class="container">
-            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-delay="200">Junte-se à Comunidade</h3>
-            <p class="fs-4" data-aos="fade-up" data-aos-delay="400">
+            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500" data-i18n="contact_title">Junte-se à Comunidade</h3>
+            <p class="fs-4" data-aos="fade-up" data-aos-delay="200" data-i18n="contact_support">
                 <i class="fab fa-discord"></i> Suporte: <a href="https://discord.gg/HDWV2EVz">discord.gg/ArcxnjoAICommunity</a><br>
                 <i class="fab fa-github"></i> GitHub: <a href="https://github.com/arcxnjodev">github.com/arcxnjoDev</a>
             </p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
-               target="_blank" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="600">
+               target="_blank" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="400" data-i18n="invite">
                 <i class="fab fa-discord me-2"></i> Adicionar ao Meu Servidor
             </a>
         </div>
     </section>
 
     <footer class="py-4 text-center">
-        <small>© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
+        <small data-i18n="footer">© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init({ duration: 1500, once: true }); </script>
+    <script>
+        AOS.init({ duration: 1500, once: true });
+
+        const translations = {
+            pt: {
+                inicio: "Início",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contato",
+                contact_title: "Junte-se à Comunidade",
+                contact_support: "<i class=\"fab fa-discord\"></i> Suporte: <a href=\"https://discord.gg/HDWV2EVz\">discord.gg/ArcxnjoAICommunity</a><br><i class=\"fab fa-github\"></i> GitHub: <a href=\"https://github.com/arcxnjodev\">github.com/arcxnjoDev</a>",
+                invite: "Adicionar ao Meu Servidor",
+                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
+            },
+            en: {
+                inicio: "Home",
+                sobre: "About",
+                funcionalidades: "Features",
+                comandos: "Commands",
+                contato: "Contact",
+                contact_title: "Join the Community",
+                contact_support: "<i class=\"fab fa-discord\"></i> Support: <a href=\"https://discord.gg/HDWV2EVz\">discord.gg/ArcxnjoAICommunity</a><br><i class=\"fab fa-github\"></i> GitHub: <a href=\"https://github.com/arcxnjodev\">github.com/arcxnjoDev</a>",
+                invite: "Add to My Server",
+                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
+            },
+            es: {
+                inicio: "Inicio",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contacto: "Contacto",
+                contact_title: "Únete a la Comunidad",
+                contact_support: "<i class=\"fab fa-discord\"></i> Soporte: <a href=\"https://discord.gg/HDWV2EVz\">discord.gg/ArcxnjoAICommunity</a><br><i class=\"fab fa-github\"></i> GitHub: <a href=\"https://github.com/arcxnjodev\">github.com/arcxnjoDev</a>",
+                invite: "Añadir al Servidor",
+                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                if (translations[lang][el.dataset.i18n]) {
+                    el.innerHTML = translations[lang][el.dataset.i18n]; // innerHTML pra manter tags HTML
+                }
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        const savedLang = localStorage.getItem('language') || 'pt';
+        const switcher = document.getElementById('language-switcher');
+        if (switcher) {
+            switcher.value = savedLang;
+            changeLanguage(savedLang);
+        }
+    </script>
 </body>
 </html>

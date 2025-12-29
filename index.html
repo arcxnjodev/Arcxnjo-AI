@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { background-color: #0a0a0a; color: #e0e0e0; min-height: 100vh; overflow-x: hidden; }
+        body { 
+            background-color: #0a0a0a; 
+            color: #e0e0e0; 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; /* Rolagem lenta ao clicar no menu */
+        }
         header, footer { background-color: #111; }
         .hero {
             position: relative;
@@ -43,14 +49,14 @@
         </div>
     </header>
 
-    <section class="hero text-center">
+    <section class="hero text-center" data-aos="fade-up" data-aos-duration="1500">
         <div id="particles-js"></div>
         <div class="container position-relative">
-            <h2 class="display-2 fw-bold mb-4"><span style="color:Navyblue">ARCXNJO AI</span><img src="https://cdn.discordapp.com/emojis/855153841233461268.webp?size=96&animated=true" alt="blob" class="custom-emoji-large"></h2>
-            <p class="lead fs-3 mb-5">O assistente IA mais poderoso e divertido para seu servidor Discord!</p>
-            <p class="fs-5 mb-5 opacity-80">Chat inteligente, geração de imagens, memes, pesquisas e muito mais.</p>
+            <h2 class="display-2 fw-bold mb-4" data-aos="fade-up" data-aos-delay="200">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji-large"></h2>
+            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="400">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
+            <p class="fs-5 mb-5 opacity-80" data-aos="fade-up" data-aos-delay="600">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands" 
-               target="_blank" class="btn btn-primary btn-lg shadow-lg">
+               target="_blank" class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
                 <i class="fab fa-discord me-2"></i> Convidar o Bot Agora
             </a>
         </div>
@@ -64,7 +70,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1500, once: true }); /* Animação mais lenta */
         particlesJS("particles-js", {
             particles: {
                 number: { value: 80 },
@@ -82,12 +88,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-

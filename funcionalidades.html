@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Mesmo head -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARCXNJO AI - Funcionalidades</title>
@@ -22,37 +21,10 @@
             min-height: 100vh;
             padding-top: 120px;
         }
-        .card-feature { 
-            background-color: #1a1a1a; 
-            border: 1px solid #333; 
-            transition: all 0.4s; 
-            padding: 2rem !important; /* Caixas menores */
-            animation: float 6s ease-in-out infinite; /* Flutua devagar sempre */
-        }
-        .card-feature:hover { 
-            transform: scale(1.1) !important; 
-            box-shadow: 0 20px 40px rgba(88, 101, 242, 0.5); 
-            animation: swing 1s ease-in-out; /* Balança no hover */
-        }
-        .feature-icon { font-size: 3rem; color: #5865F2; margin-bottom: 1.5rem; }
-        nav a { color: #bbb !important; }
-        nav a:hover { color: #fff !important; }
+        .card-feature { background-color: #1a1a1a; border: 1px solid #333; transition: all 0.4s; }
+        .card-feature:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3); border-color: #5865F2; }
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
-
-        /* Animações */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes swing {
-            20% { transform: rotate(15deg); }
-            40% { transform: rotate(-10deg); }
-            60% { transform: rotate(5deg); }
-            80% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
-        }
+        #language-switcher { background: #222; border: none; color: white; padding: 8px 12px; border-radius: 8px; font-size: 1rem; margin-right: 20px; }
     </style>
 </head>
 <body>
@@ -60,60 +32,73 @@
     <header class="py-3 shadow-sm fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
-            <nav>
-                <a href="index.html" class="mx-3"><span style="color:WHITE">Inicio</span></a>
-                <a href="sobre.html" class="mx-3"><span style="color:WHITE">Sobre</span></a>
-                <a href="funcionalidades.html" class="mx-3"><span style="color:WHITE">Funcionalidades</span></a>
-                <a href="comandos.html" class="mx-3"><span style="color:WHITE">Comandos</span></a>
-                <a href="contato.html" class="mx-3"><span style="color:WHITE">Contato</span></a>
-            </nav>
+            <div class="d-flex align-items-center">
+                <select id="language-switcher" onchange="changeLanguage(this.value)">
+                    <option value="pt">
+                        <img src="https://flagcdn.com/20x15/br.png" alt="BR" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Português
+                    </option>
+                    <option value="en">
+                        <img src="https://flagcdn.com/20x15/us.png" alt="US" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> English
+                    </option>
+                    <option value="es">
+                        <img src="https://flagcdn.com/20x15/es.png" alt="ES" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Español
+                    </option>
+                </select>
+                <nav>
+                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
+                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
+                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
+                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
+                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <section class="main-section">
         <div class="container">
-            <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500">Funcionalidades Incríveis</h3>
+            <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500" data-i18n="features_title">Funcionalidades Incríveis</h3>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="0">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/50582d45-6ad5-4bc0-b512-212ff0c0b211.GIF" alt="blob" class="custom-emoji">
-                        <h5><span style="color:Green">IA Conversacional</span></h5>
-                        <p>Respostas inteligentes e contextualizadas em tempo real.</p>
+                        <h5><span style="color:Green" data-i18n="feature1_title">IA Conversacional</span></h5>
+                        <p data-i18n="feature1_desc">Respostas inteligentes e contextualizadas em tempo real.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/a2986908-d435-429e-b655-ba9292530857.gif" alt="blob" class="custom-emoji">
-                        <h5><span style="color:blue">Geração de Imagens</span></h5>
-                        <p>Crie artes incríveis com IA diretamente no chat.</p>
+                        <h5><span style="color:blue" data-i18n="feature2_title">Geração de Imagens</span></h5>
+                        <p data-i18n="feature2_desc">Crie artes incríveis com IA diretamente no chat.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/498fc1a2-b4cd-481e-9eba-73eb5cbc870d.gif" alt="blob" class="custom-emoji">
-                        <h5><span style="color:Purple">Memes e Diversão</span></h5>
-                        <p>Comandos para memes automáticos e interações leves.</p>
+                        <h5><span style="color:Purple" data-i18n="feature3_title">Memes e Diversão</span></h5>
+                        <p data-i18n="feature3_desc">Comandos para memes automáticos e interações leves.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/030e74d7-4035-48a5-9166-30b06d0c7d8b.GIF" alt="blob" class="custom-emoji">
-                        <h5><span style="color:Yellow">Pesquisas Avançadas</span></h5>
-                        <p>Busque web, notícias, clima e mais sem sair do Discord.</p>
+                        <h5><span style="color:Yellow" data-i18n="feature4_title">Pesquisas Avançadas</span></h5>
+                        <p data-i18n="feature4_desc">Busque web, notícias, clima e mais sem sair do Discord.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/9627ff12-7b11-453a-94ca-ed83dd83ed67.GIF" alt="blob" class="custom-emoji">
-                        <h5><span style="color:Turquoise">Música e Moderação</span></h5>
-                        <p>Player de música, níveis, economia e ferramentas de mod.</p>
+                        <h5><span style="color:Turquoise" data-i18n="feature5_title">Música e Moderação</span></h5>
+                        <p data-i18n="feature5_desc">Player de música, níveis, economia e ferramentas de mod.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/1591665f-cc64-4203-af17-1681c6b8674c.png" alt="blob" class="custom-emoji">
-                        <h5><span style="color:Violet">Segurança Máxima</span></h5>
-                        <p>Hospedado em servidores premium, sem rastreamento.</p>
+                        <h5><span style="color:Violet" data-i18n="feature6_title">Segurança Máxima</span></h5>
+                        <p data-i18n="feature6_desc">Hospedado em servidores premium, sem rastreamento.</p>
                     </div>
                 </div>
             </div>
@@ -121,13 +106,95 @@
     </section>
 
     <footer class="py-4 text-center">
-        <small>© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
+        <small data-i18n="footer">© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1500, once: true });
+
+        const translations = {
+            pt: {
+                inicio: "Início",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contato",
+                features_title: "Funcionalidades Incríveis",
+                feature1_title: "IA Conversacional",
+                feature1_desc: "Respostas inteligentes e contextualizadas em tempo real.",
+                feature2_title: "Geração de Imagens",
+                feature2_desc: "Crie artes incríveis com IA diretamente no chat.",
+                feature3_title: "Memes e Diversão",
+                feature3_desc: "Comandos para memes automáticos e interações leves.",
+                feature4_title: "Pesquisas Avançadas",
+                feature4_desc: "Busque web, notícias, clima e mais sem sair do Discord.",
+                feature5_title: "Música e Moderação",
+                feature5_desc: "Player de música, níveis, economia e ferramentas de mod.",
+                feature6_title: "Segurança Máxima",
+                feature6_desc: "Hospedado em servidores premium, sem rastreamento.",
+                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
+            },
+            en: {
+                inicio: "Home",
+                sobre: "About",
+                funcionalidades: "Features",
+                comandos: "Commands",
+                contato: "Contact",
+                features_title: "Amazing Features",
+                feature1_title: "Conversational AI",
+                feature1_desc: "Intelligent and contextual responses in real time.",
+                feature2_title: "Image Generation",
+                feature2_desc: "Create amazing art with AI directly in the chat.",
+                feature3_title: "Memes and Fun",
+                feature3_desc: "Commands for automatic memes and light interactions.",
+                feature4_title: "Advanced Searches",
+                feature4_desc: "Search web, news, weather and more without leaving Discord.",
+                feature5_title: "Music and Moderation",
+                feature5_desc: "Music player, levels, economy and mod tools.",
+                feature6_title: "Maximum Security",
+                feature6_desc: "Hosted on premium servers, no tracking.",
+                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
+            },
+            es: {
+                inicio: "Inicio",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contacto: "Contacto",
+                features_title: "Funcionalidades Increíbles",
+                feature1_title: "IA Conversacional",
+                feature1_desc: "Respuestas inteligentes y contextualizadas en tiempo real.",
+                feature2_title: "Generación de Imágenes",
+                feature2_desc: "Crea artes increíbles con IA directamente en el chat.",
+                feature3_title: "Memes y Diversión",
+                feature3_desc: "Comandos para memes automáticos e interacciones ligeras.",
+                feature4_title: "Búsquedas Avanzadas",
+                feature4_desc: "Busca web, noticias, clima y más sin salir de Discord.",
+                feature5_title: "Música y Moderación",
+                feature5_desc: "Reproductor de música, niveles, economía y herramientas de mod.",
+                feature6_title: "Seguridad Máxima",
+                feature6_desc: "Hospedado en servidores premium, sin rastreo.",
+                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                if (translations[lang][el.dataset.i18n]) {
+                    el.textContent = translations[lang][el.dataset.i18n];
+                }
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        const savedLang = localStorage.getItem('language') || 'pt';
+        const switcher = document.getElementById('language-switcher');
+        if (switcher) {
+            switcher.value = savedLang;
+            changeLanguage(savedLang);
+        }
     </script>
 </body>
 </html>

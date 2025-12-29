@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCXNJO AI - Sobre</title>
+    <title>ARCXNJO AI - Contato</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -17,17 +17,14 @@
         }
         header, footer { background-color: #111; }
         .main-section {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://c4.wallpaperflare.com/wallpaper/123/312/5/earth-planet-stars-blue-marble-wallpaper-preview.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://c4.wallpaperflare.com/wallpaper/712/712/13/artwork-map-water-drops-digital-art-wallpaper-preview.jpg') center/cover no-repeat;
             min-height: 100vh;
             padding-top: 120px;
-            display: flex;
-            align-items: center;
         }
-        nav a { color: #bbb !important; transition: color 0.3s; }
+        .btn-primary { background-color: #5865F2; border: none; }
+        nav a { color: #bbb !important; }
         nav a:hover { color: #fff !important; }
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
-        .feature-list { text-align: left; max-width: 800px; margin: 0 auto; }
-        .feature-list li { margin-bottom: 15px; font-size: 1.1rem; }
         #language-switcher { background: #222; border: none; color: white; padding: 8px 12px; border-radius: 8px; font-size: 1rem; margin-right: 20px; }
     </style>
 </head>
@@ -37,11 +34,17 @@
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
             <div class="d-flex align-items-center">
-            <select id="language-switcher" onchange="changeLanguage(this.value)">
-                <option value="pt">🇧🇷</option>
-                <option value="en">🇺🇸</option>
-                <option value="es">🇪🇸</option>
-            </select>
+                <select id="language-switcher" onchange="changeLanguage(this.value)">
+                    <option value="pt">
+                        <img src="https://flagcdn.com/20x15/br.png" alt="BR" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Português
+                    </option>
+                    <option value="en">
+                        <img src="https://flagcdn.com/20x15/us.png" alt="US" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> English
+                    </option>
+                    <option value="es">
+                        <img src="https://flagcdn.com/20x15/es.png" alt="ES" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Español
+                    </option>
+                </select>
                 <nav>
                     <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
                     <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
@@ -55,28 +58,15 @@
 
     <section class="main-section text-center">
         <div class="container">
-            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500" data-i18n="about_title">Sobre o ARCXNJO AI</h3>
-            <div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <p class="lead mb-4" data-i18n="about_desc1">O ARCXNJO AI é um bot Discord completo e avançado, criado para transformar qualquer servidor em um espaço inteligente, divertido e altamente interativo.</p>
-                    
-                    <p class="fs-5 mb-5" data-i18n="about_desc2">Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local via Ollama (como gpt-oss:20b-cloud) para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.</p>
-
-                    <h4 class="mb-4" data-i18n="features_title">Principais características técnicas:</h4>
-                    <ul class="feature-list list-unstyled">
-                        <li data-aos="fade-up" data-aos-delay="100">🤖 <strong data-i18n="feature1">IA local com Ollama</strong>: Respostas inteligentes usando modelos potentes rodando na máquina do host.</li>
-                        <li data-aos="fade-up" data-aos-delay="200">🖼️ <strong data-i18n="feature2">Geração de imagens</strong>: Integração com Flux e outros modelos para criar artes incríveis a partir de descrições.</li>
-                        <li data-aos="fade-up" data-aos-delay="300">🔍 <strong data-i18n="feature3">Análise de arquivos e vídeos</strong>: Lê código, documentos e até analisa vídeos (até 30MB) automaticamente.</li>
-                        <li data-aos="fade-up" data-aos-delay="400">😄 <strong data-i18n="feature4">Reações automáticas</strong>: Responde com emojis e interage naturalmente com mensagens.</li>
-                        <li data-aos="fade-up" data-aos-delay="500">🌐 <strong data-i18n="feature5">Pesquisas na web</strong>: Busca informações em tempo real via Serper API.</li>
-                        <li data-aos="fade-up" data-aos-delay="600">📊 <strong data-i18n="feature6">Logging e histórico</strong>: Registra comandos usados e mantém logs detalhados para monitoramento.</li>
-                        <li data-aos="fade-up" data-aos-delay="700">⚡ <strong data-i18n="feature7">Performance otimizada</strong>: Verificação periódica do Ollama, suporte a múltiplos comandos simultâneos e respostas rápidas.</li>
-                        <li data-aos="fade-up" data-aos-delay="800">🛡️ <strong data-i18n="feature8">Segurança</strong>: Sem armazenamento de conversas, hospedagem premium e foco em privacidade.</li>
-                    </ul>
-
-                    <p class="mt-5 fs-5" data-i18n="about_final">O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.</p>
-                </div>
-            </div>
+            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500" data-i18n="contact_title">Junte-se à Comunidade</h3>
+            <p class="fs-4" data-aos="fade-up" data-aos-delay="200" data-i18n="contact_support">
+                <i class="fab fa-discord"></i> Suporte: <a href="https://discord.gg/HDWV2EVz">discord.gg/ArcxnjoAICommunity</a><br>
+                <i class="fab fa-github"></i> GitHub: <a href="https://github.com/arcxnjodev">github.com/arcxnjoDev</a>
+            </p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
+               target="_blank" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="400" data-i18n="invite">
+                <i class="fab fa-discord me-2"></i> Adicionar ao Meu Servidor
+            </a>
         </div>
     </section>
 
@@ -96,19 +86,9 @@
                 funcionalidades: "Funcionalidades",
                 comandos: "Comandos",
                 contato: "Contato",
-                about_title: "Sobre o ARCXNJO AI",
-                about_desc1: "O ARCXNJO AI é um bot Discord completo e avançado, criado para transformar qualquer servidor em um espaço inteligente, divertido e altamente interativo.",
-                about_desc2: "Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local via Ollama (como gpt-oss:20b-cloud) para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.",
-                features_title: "Principais características técnicas:",
-                feature1: "IA local com Ollama",
-                feature2: "Geração de imagens",
-                feature3: "Análise de arquivos e vídeos",
-                feature4: "Reações automáticas",
-                feature5: "Pesquisas na web",
-                feature6: "Logging e histórico",
-                feature7: "Performance otimizada",
-                feature8: "Segurança",
-                about_final: "O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.",
+                contact_title: "Junte-se à Comunidade",
+                contact_support: "<i class=\"fab fa-discord\"></i> Suporte: <a href=\"https://discord.gg/HDWV2EVz\">discord.gg/ArcxnjoAICommunity</a><br><i class=\"fab fa-github\"></i> GitHub: <a href=\"https://github.com/arcxnjodev\">github.com/arcxnjoDev</a>",
+                invite: "Adicionar ao Meu Servidor",
                 footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
             },
             en: {
@@ -117,19 +97,9 @@
                 funcionalidades: "Features",
                 comandos: "Commands",
                 contato: "Contact",
-                about_title: "About ARCXNJO AI",
-                about_desc1: "ARCXNJO AI is a complete and advanced Discord bot, designed to turn any server into a smart, fun, and highly interactive space.",
-                about_desc2: "Built in Python with discord.py, the bot uses local AI models via Ollama (like gpt-oss:20b-cloud) for fast and private responses, without sending data to external servers. This ensures speed, security, and total privacy – your conversations are never logged.",
-                features_title: "Main technical features:",
-                feature1: "Local AI with Ollama",
-                feature2: "Image generation",
-                feature3: "File and video analysis",
-                feature4: "Automatic reactions",
-                feature5: "Web searches",
-                feature6: "Logging and history",
-                feature7: "Optimized performance",
-                feature8: "Security",
-                about_final: "ARCXNJO AI is perfect for study, programming, fun, or large community servers – bringing cutting-edge artificial intelligence directly to your Discord, in a safe and fun way.",
+                contact_title: "Join the Community",
+                contact_support: "<i class=\"fab fa-discord\"></i> Support: <a href=\"https://discord.gg/HDWV2EVz\">discord.gg/ArcxnjoAICommunity</a><br><i class=\"fab fa-github\"></i> GitHub: <a href=\"https://github.com/arcxnjodev\">github.com/arcxnjoDev</a>",
+                invite: "Add to My Server",
                 footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
             },
             es: {
@@ -137,20 +107,10 @@
                 sobre: "Sobre",
                 funcionalidades: "Funcionalidades",
                 comandos: "Comandos",
-                contato: "Contacto",
-                about_title: "Sobre ARCXNJO AI",
-                about_desc1: "ARCXNJO AI es un bot de Discord completo y avanzado, creado para transformar cualquier servidor en un espacio inteligente, divertido y altamente interactivo.",
-                about_desc2: "Desarrollado en Python con discord.py, el bot utiliza modelos de IA local vía Ollama (como gpt-oss:20b-cloud) para respuestas rápidas y privadas, sin enviar datos a servidores externos. Esto garantiza velocidad, seguridad y privacidad total – tus conversaciones nunca se registran.",
-                features_title: "Principales características técnicas:",
-                feature1: "IA local con Ollama",
-                feature2: "Generación de imágenes",
-                feature3: "Análisis de archivos y videos",
-                feature4: "Reacciones automáticas",
-                feature5: "Búsquedas en la web",
-                feature6: "Logging e histórico",
-                feature7: "Rendimiento optimizado",
-                feature8: "Seguridad",
-                about_final: "ARCXNJO AI es perfecto para servidores de estudio, programación, diversión o comunidades grandes – trae inteligencia artificial de vanguardia directamente a tu Discord, de forma segura y divertida.",
+                contacto: "Contacto",
+                contact_title: "Únete a la Comunidad",
+                contact_support: "<i class=\"fab fa-discord\"></i> Soporte: <a href=\"https://discord.gg/HDWV2EVz\">discord.gg/ArcxnjoAICommunity</a><br><i class=\"fab fa-github\"></i> GitHub: <a href=\"https://github.com/arcxnjodev\">github.com/arcxnjoDev</a>",
+                invite: "Añadir al Servidor",
                 footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
             }
         };
@@ -158,7 +118,7 @@
         function changeLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 if (translations[lang][el.dataset.i18n]) {
-                    el.textContent = translations[lang][el.dataset.i18n];
+                    el.innerHTML = translations[lang][el.dataset.i18n]; // innerHTML pra manter tags HTML
                 }
             });
             localStorage.setItem('language', lang);
@@ -173,4 +133,3 @@
     </script>
 </body>
 </html>
-

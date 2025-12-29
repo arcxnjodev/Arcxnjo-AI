@@ -14,7 +14,7 @@
             color: #e0e0e0; 
             min-height: 100vh; 
             overflow-x: hidden; 
-            scroll-behavior: smooth; /* Rolagem suave ao clicar no menu */
+            scroll-behavior: smooth; 
         }
         header, footer { background-color: #111; }
         .main-section {
@@ -22,12 +22,37 @@
             min-height: 100vh;
             padding-top: 120px;
         }
-        .card-feature { background-color: #1a1a1a; border: 1px solid #333; transition: all 0.4s; }
-        .card-feature:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3); border-color: #5865F2; }
+        .card-feature { 
+            background-color: #1a1a1a; 
+            border: 1px solid #333; 
+            transition: all 0.4s; 
+            padding: 2rem !important; /* Caixas menores */
+            animation: float 6s ease-in-out infinite; /* Flutua devagar sempre */
+        }
+        .card-feature:hover { 
+            transform: scale(1.1) !important; 
+            box-shadow: 0 20px 40px rgba(88, 101, 242, 0.5); 
+            animation: swing 1s ease-in-out; /* Balança no hover */
+        }
         .feature-icon { font-size: 3rem; color: #5865F2; margin-bottom: 1.5rem; }
         nav a { color: #bbb !important; }
         nav a:hover { color: #fff !important; }
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
+
+        /* Animações */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes swing {
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
     </style>
 </head>
 <body>
@@ -49,14 +74,14 @@
         <div class="container">
             <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500">Funcionalidades Incríveis</h3>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="0">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/50582d45-6ad5-4bc0-b512-212ff0c0b211.GIF" alt="blob" class="custom-emoji">
                         <h5><span style="color:Green">IA Conversacional</span></h5>
                         <p>Respostas inteligentes e contextualizadas em tempo real.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/a2986908-d435-429e-b655-ba9292530857.gif" alt="blob" class="custom-emoji">
                         <h5><span style="color:blue">Geração de Imagens</span></h5>
@@ -70,21 +95,21 @@
                         <p>Comandos para memes automáticos e interações leves.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/030e74d7-4035-48a5-9166-30b06d0c7d8b.GIF" alt="blob" class="custom-emoji">
                         <h5><span style="color:Yellow">Pesquisas Avançadas</span></h5>
                         <p>Busque web, notícias, clima e mais sem sair do Discord.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/9627ff12-7b11-453a-94ca-ed83dd83ed67.GIF" alt="blob" class="custom-emoji">
                         <h5><span style="color:Turquoise">Música e Moderação</span></h5>
                         <p>Player de música, níveis, economia e ferramentas de mod.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
                     <div class="card-feature text-center p-5 rounded h-100">
                         <img src="https://emoji.discadia.com/emojis/1591665f-cc64-4203-af17-1681c6b8674c.png" alt="blob" class="custom-emoji">
                         <h5><span style="color:Violet">Segurança Máxima</span></h5>
@@ -102,7 +127,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1500, once: true }); /* Animação mais lenta */
+        AOS.init({ duration: 1500, once: true });
     </script>
 </body>
 </html>

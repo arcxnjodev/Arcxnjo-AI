@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Mesmo head -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARCXNJO AI - Contato</title>
@@ -9,7 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { background-color: #0a0a0a; color: #e0e0e0; min-height: 100vh; }
+        body { 
+            background-color: #0a0a0a; 
+            color: #e0e0e0; 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+        }
         header, footer { background-color: #111; }
         .main-section {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://c4.wallpaperflare.com/wallpaper/712/712/13/artwork-map-water-drops-digital-art-wallpaper-preview.jpg') center/cover no-repeat;
@@ -37,15 +42,15 @@
         </div>
     </header>
 
-    <section class="main-section text-center">
+    <section class="main-section text-center" data-aos="fade-up" data-aos-duration="1500">
         <div class="container">
-            <h3 class="mb-5 fw-bold">Junte-se à Comunidade</h3>
-            <p class="fs-4">
-                <i class="fab fa-discord"></i> Suporte: <a href="https://discord.com/channels/1453830831515897878">discord.gg/ArcxnjoAICommunity</a><br>
+            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-delay="200">Junte-se à Comunidade</h3>
+            <p class="fs-4" data-aos="fade-up" data-aos-delay="400">
+                <i class="fab fa-discord"></i> Suporte: <a href="https://discord.gg/HDWV2EVz">discord.gg/ArcxnjoAICommunity</a><br>
                 <i class="fab fa-github"></i> GitHub: <a href="https://github.com/arcxnjodev">github.com/arcxnjoDev</a>
             </p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
-               target="_blank" class="btn btn-primary btn-lg mt-4">
+               target="_blank" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="600">
                 <i class="fab fa-discord me-2"></i> Adicionar ao Meu Servidor
             </a>
         </div>
@@ -57,8 +62,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init({ duration: 1000, once: true }); </script>
+    <script> AOS.init({ duration: 1500, once: true }); </script>
 </body>
-
 </html>
-

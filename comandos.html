@@ -29,6 +29,7 @@
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
         .command-list { max-width: 800px; margin: 0 auto; }
         .command-list li { margin-bottom: 20px; font-size: 1.1rem; }
+        #language-switcher { background: #222; border: none; color: white; padding: 8px 12px; border-radius: 8px; font-size: 1rem; margin-right: 20px; }
     </style>
 </head>
 <body>
@@ -36,60 +37,148 @@
     <header class="py-3 shadow-sm fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
-            <nav>
-                <a href="index.html" class="mx-3">Início</a>
-                <a href="sobre.html" class="mx-3">Sobre</a>
-                <a href="funcionalidades.html" class="mx-3">Funcionalidades</a>
-                <a href="comandos.html" class="mx-3">Comandos</a>
-                <a href="contato.html" class="mx-3">Contato</a>
-            </nav>
+            <div class="d-flex align-items-center">
+                <select id="language-switcher" onchange="changeLanguage(this.value)">
+                    <option value="pt">
+                        <img src="https://flagcdn.com/20x15/br.png" alt="BR" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Português
+                    </option>
+                    <option value="en">
+                        <img src="https://flagcdn.com/20x15/us.png" alt="US" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> English
+                    </option>
+                    <option value="es">
+                        <img src="https://flagcdn.com/20x15/es.png" alt="ES" width="20" height="15" style="margin-right: 8px; vertical-align: middle;"> Español
+                    </option>
+                </select>
+                <nav>
+                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
+                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
+                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
+                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
+                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section class="main-section text-center" data-aos="fade-up" data-aos-duration="1500">
+    <section class="main-section text-center">
         <div class="container">
-            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-delay="200">Comandos do ARCXNJO AI</h3>
-            <p class="mb-5 fs-5" data-aos="fade-up" data-aos-delay="300">Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).</p>
-            <ul class="command-list list-unstyled" data-aos="fade-up" data-aos-delay="400">
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-duration="1500" data-i18n="commands_title">Comandos do ARCXNJO AI</h3>
+            <p class="mb-5 fs-5" data-aos="fade-up" data-aos-delay="200" data-i18n="commands_desc">Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).</p>
+            <ul class="command-list list-unstyled" data-aos="fade-up" data-aos-delay="300">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command1">
                     <strong><code>/chat [pergunta]</code></strong><br>
                     Conversa com a IA avançada (Grok, GPT-4o, Claude, Flux etc.). Respostas inteligentes e contextualizadas em tempo real.
                 </li>
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command2">
                     <strong><code>/imagem [descrição]</code></strong><br>
                     Gera imagens incríveis com IA a partir da sua descrição. Suporta vários estilos e modelos avançados.
                 </li>
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command3">
                     <strong><code>/meme [texto superior] | [texto inferior]</code></strong><br>
                     Cria memes personalizados com templates populares. Use "|" para separar texto superior e inferior.
                 </li>
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command4">
                     <strong><code>/pesquisar [tópico]</code></strong><br>
                     Pesquisa na web em tempo real (notícias, clima, informações gerais) usando Serper API.
                 </li>
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command5">
                     <strong><code>/ajuda</code> ou <code>/comandos</code></strong><br>
                     Mostra a lista completa de comandos disponíveis.
                 </li>
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command6">
                     <strong>Análise de arquivos</strong><br>
                     Envie arquivos (código, documentos, imagens até 100MB, vídeos até 30MB) e o bot analisa automaticamente (explica código, descreve imagens/vídeos).
                 </li>
-                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded">
+                <li class="list-group-item bg-dark border-secondary mb-4 p-4 rounded" data-i18n="command7">
                     <strong>Reações automáticas</strong><br>
                     O bot reage com emojis inteligentes às mensagens do servidor (diversão e interação natural).
                 </li>
             </ul>
-            <p class="mt-5" data-aos="fade-up" data-aos-delay="500">Todos os comandos são slash commands (/) e funcionam em servidores e DMs!</p>
+            <p class="mt-5" data-aos="fade-up" data-aos-delay="500" data-i18n="commands_note">Todos os comandos são slash commands (/) e funcionam em servidores e DMs!</p>
         </div>
     </section>
 
     <footer class="py-4 text-center">
-        <small>© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
+        <small data-i18n="footer">© 2025 ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init({ duration: 1500, once: true }); </script>
+    <script>
+        AOS.init({ duration: 1500, once: true });
+
+        const translations = {
+            pt: {
+                inicio: "Início",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contato",
+                commands_title: "Comandos do ARCXNJO AI",
+                commands_desc: "Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).",
+                command1: "<strong><code>/chat [pergunta]</code></strong><br>Conversa com a IA avançada (Grok, GPT-4o, Claude, Flux etc.). Respostas inteligentes e contextualizadas em tempo real.",
+                command2: "<strong><code>/imagem [descrição]</code></strong><br>Gera imagens incríveis com IA a partir da sua descrição. Suporta vários estilos e modelos avançados.",
+                command3: "<strong><code>/meme [texto superior] | [texto inferior]</code></strong><br>Cria memes personalizados com templates populares. Use \"|\" para separar texto superior e inferior.",
+                command4: "<strong><code>/pesquisar [tópico]</code></strong><br>Pesquisa na web em tempo real (notícias, clima, informações gerais) usando Serper API.",
+                command5: "<strong><code>/ajuda</code> ou <code>/comandos</code></strong><br>Mostra a lista completa de comandos disponíveis.",
+                command6: "<strong>Análise de arquivos</strong><br>Envie arquivos (código, documentos, imagens até 100MB, vídeos até 30MB) e o bot analisa automaticamente (explica código, descreve imagens/vídeos).",
+                command7: "<strong>Reações automáticas</strong><br>O bot reage com emojis inteligentes às mensagens do servidor (diversão e interação natural).",
+                commands_note: "Todos os comandos são slash commands (/) e funcionam em servidores e DMs!",
+                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
+            },
+            en: {
+                inicio: "Home",
+                sobre: "About",
+                funcionalidades: "Features",
+                comandos: "Commands",
+                contato: "Contact",
+                commands_title: "ARCXNJO AI Commands",
+                commands_desc: "Here are all the commands available for regular users (no admin commands).",
+                command1: "<strong><code>/chat [question]</code></strong><br>Chat with advanced AI (Grok, GPT-4o, Claude, Flux etc.). Intelligent and contextual responses in real time.",
+                command2: "<strong><code>/image [description]</code></strong><br>Generate amazing images with AI from your description. Supports various styles and advanced models.",
+                command3: "<strong><code>/meme [top text] | [bottom text]</code></strong><br>Create custom memes with popular templates. Use \"|\" to separate top and bottom text.",
+                command4: "<strong><code>/search [topic]</code></strong><br>Real-time web search (news, weather, general info) using Serper API.",
+                command5: "<strong><code>/help</code> or <code>/commands</code></strong><br>Shows the full list of available commands.",
+                command6: "<strong>File analysis</strong><br>Send files (code, documents, images up to 100MB, videos up to 30MB) and the bot analyzes them automatically (explains code, describes images/videos).",
+                command7: "<strong>Automatic reactions</strong><br>The bot reacts with smart emojis to server messages (fun and natural interaction).",
+                commands_note: "All commands are slash commands (/) and work in servers and DMs!",
+                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
+            },
+            es: {
+                inicio: "Inicio",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contacto: "Contacto",
+                commands_title: "Comandos de ARCXNJO AI",
+                commands_desc: "Aquí están todos los comandos disponibles para usuarios comunes (sin comandos de administrador).",
+                command1: "<strong><code>/chat [pregunta]</code></strong><br>Conversación con IA avanzada (Grok, GPT-4o, Claude, Flux etc.). Respuestas inteligentes y contextualizadas en tiempo real.",
+                command2: "<strong><code>/imagen [descripción]</code></strong><br>Genera imágenes increíbles con IA a partir de tu descripción. Soporta varios estilos y modelos avanzados.",
+                command3: "<strong><code>/meme [texto superior] | [texto inferior]</code></strong><br>Crea memes personalizados con templates populares. Usa \"|\" para separar texto superior e inferior.",
+                command4: "<strong><code>/pesquisar [tema]</code></strong><br>Búsqueda en la web en tiempo real (noticias, clima, información general) usando Serper API.",
+                command5: "<strong><code>/ayuda</code> o <code>/comandos</code></strong><br>Muestra la lista completa de comandos disponibles.",
+                command6: "<strong>Análisis de archivos</strong><br>Envía archivos (código, documentos, imágenes hasta 100MB, videos hasta 30MB) y el bot los analiza automáticamente (explica código, describe imágenes/videos).",
+                command7: "<strong>Reacciones automáticas</strong><br>El bot reacciona con emojis inteligentes a los mensajes del servidor (diversión e interacción natural).",
+                commands_note: "Todos los comandos son slash commands (/) y funcionan en servidores y DMs!",
+                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                if (translations[lang][el.dataset.i18n]) {
+                    el.innerHTML = translations[lang][el.dataset.i18n]; // innerHTML pra manter <code> e <br>
+                }
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        const savedLang = localStorage.getItem('language') || 'pt';
+        const switcher = document.getElementById('language-switcher');
+        if (switcher) {
+            switcher.value = savedLang;
+            changeLanguage(savedLang);
+        }
+    </script>
 </body>
 </html>

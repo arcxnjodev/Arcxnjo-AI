@@ -33,27 +33,69 @@
         .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
         .custom-emoji-large { width: 80px; height: 80px; vertical-align: middle; margin-left: 15px; }
         #language-switcher { background: #222; border: none; color: white; padding: 8px; border-radius: 8px; margin-right: 20px; }
+
+        /* Tela de entrada full screen */
+        #enter-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://c4.wallpaperflare.com/wallpaper/848/572/54/space-world-planet-earth-wallpaper-preview.jpg') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: pointer;
+            transition: opacity 1s ease;
+        }
+        #enter-screen h2 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 0 20px #5865F2;
+        }
+
+        /* Music player no canto esquerdo embaixo */
+        #music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+        #music-icon {
+            font-size: 1.5rem;
+            color: #5865F2;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        #volume-slider {
+            width: 100px;
+            accent-color: #5865F2;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Tela de entrada -->
+    <div id="enter-screen">
+        <h2>Clique para entrar</h2>
+    </div>
+
     <header class="py-3 shadow-sm fixed-top">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h4 mb-0 fw-bold">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji"></h1>
-            <div class="d-flex align-items-center">
-            <select id="language-switcher" onchange="changeLanguage(this.value)">
-                <option value="pt">🇧🇷</option>
-                <option value="en">🇺🇸</option>
-                <option value="es">🇪🇸</option>
-            </select>
-                <nav>
-                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
-                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
-                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
-                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
-                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
-                </nav>
-            </div>
+            <nav>
+                <a href="index.html" class="mx-3">Início</a>
+                <a href="sobre.html" class="mx-3">Sobre</a>
+                <a href="funcionalidades.html" class="mx-3">Funcionalidades</a>
+                <a href="comandos.html" class="mx-3">Comandos</a>
+                <a href="contato.html" class="mx-3">Contato</a>
+            </nav>
         </div>
     </header>
 
@@ -61,24 +103,36 @@
         <div id="particles-js"></div>
         <div class="container position-relative">
             <h2 class="display-2 fw-bold mb-4" data-aos="fade-up" data-aos-delay="200">ARCXNJO AI <img src="https://cdn.discordapp.com/emojis/1173147038532251719.webp?size=96&animated=true" alt="blob" class="custom-emoji-large"></h2>
-            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="400" data-i18n="subtitle">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
-            <p class="fs-5 mb-5 opacity-80" data-aos="fade-up" data-aos-delay="600" data-i18n="description">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
+            <p class="lead fs-3 mb-5" data-aos="fade-up" data-aos-delay="400">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
+            <p class="fs-5 mb-5 opacity-80" data-aos="fade-up" data-aos-delay="600">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands" 
-               target="_blank" class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800" data-i18n="invite">
+               target="_blank" class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="800">
                 <i class="fab fa-discord me-2"></i> Convidar o Bot Agora
             </a>
         </div>
     </section>
 
     <footer class="py-4 text-center">
-        <small data-i18n="footer">© 2025 ARCXNJO AI <img src="https://emoji.discadia.com/emojis/0657444b-e37c-473e-ae86-1d105aa0a443.GIF" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
+        <small>© 2025 ARCXNJO AI <img src="https://emoji.discadia.com/emojis/0657444b-e37c-473e-ae86-1d105aa0a443.GIF" alt="blob" class="custom-emoji"> – Feito com ❤️ e Inteligência Artificial</small>
     </footer>
+
+    <!-- Áudio escondido -->
+    <audio id="bg-music" loop>
+        <source src="https://your-music-link.mp3" type="audio/mpeg"> <!-- Mude pra sua música -->
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <!-- Player no canto esquerdo embaixo -->
+    <div id="music-player">
+        <i id="music-icon" class="fas fa-play"></i>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        AOS.init({ duration: 1500, once: true }); /* Animação mais lenta */
+        AOS.init({ duration: 1500, once: true });
         particlesJS("particles-js", {
             particles: {
                 number: { value: 80 },
@@ -95,58 +149,41 @@
             }
         });
 
-        // Traduções
-        const translations = {
-            pt: {
-                inicio: "Início",
-                sobre: "Sobre",
-                funcionalidades: "Funcionalidades",
-                comandos: "Comandos",
-                contato: "Contato",
-                subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
-                description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
-                invite: "Convidar o Bot Agora",
-                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
-            },
-            en: {
-                inicio: "Home",
-                sobre: "About",
-                funcionalidades: "Features",
-                comandos: "Commands",
-                contato: "Contact",
-                subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
-                description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
-                invite: "Add the Bot Now",
-                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
-            },
-            es: {
-                inicio: "Inicio",
-                sobre: "Sobre",
-                funcionalidades: "Funcionalidades",
-                comandos: "Comandos",
-                contato: "Contacto",
-                subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
-                description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
-                invite: "Invitar al Bot Ahora",
-                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+        const enterScreen = document.getElementById('enter-screen');
+        const music = document.getElementById('bg-music');
+        const icon = document.getElementById('music-icon');
+        const volumeSlider = document.getElementById('volume-slider');
+
+        music.volume = 0.5; // Volume inicial
+
+        // Ao clicar na tela de entrada
+        enterScreen.addEventListener('click', () => {
+            enterScreen.style.opacity = '0';
+            setTimeout(() => {
+                enterScreen.style.display = 'none';
+            }, 1000);
+            music.play();
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+        });
+
+        // Play/Pause
+        icon.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                music.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
             }
-        };
+        });
 
-        function changeLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                el.textContent = translations[lang][el.dataset.i18n] || el.textContent;
-            });
-            localStorage.setItem('language', lang);
-        }
-
-        // Carrega idioma salvo ou default PT
-        const savedLang = localStorage.getItem('language') || 'pt';
-        document.getElementById('language-switcher').value = savedLang;
-        changeLanguage(savedLang);
+        // Volume slider
+        volumeSlider.addEventListener('input', () => {
+            music.volume = volumeSlider.value;
+        });
     </script>
 </body>
 </html>
-
-
-
-

@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { background-color: #0a0a0a; color: #e0e0e0; min-height: 100vh; overflow-x: hidden; }
+        body { 
+            background-color: #0a0a0a; 
+            color: #e0e0e0; 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+        }
         header, footer { background-color: #111; }
         .main-section {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://c4.wallpaperflare.com/wallpaper/123/312/5/earth-planet-stars-blue-marble-wallpaper-preview.jpg') center/cover no-repeat;
@@ -39,25 +45,25 @@
         </div>
     </header>
 
-    <section class="main-section text-center">
+    <section class="main-section text-center" data-aos="fade-up" data-aos-duration="1500">
         <div class="container">
-            <h3 class="mb-5 fw-bold">Sobre o ARCXNJO AI <img src="https://emoji.discadia.com/emojis/eddc749b-9ea3-4304-a37b-65dc7aff36c3.gif"></h3>
+            <h3 class="mb-5 fw-bold" data-aos="fade-up" data-aos-delay="200">Sobre o ARCXNJO AI</h3>
             <div class="row justify-content-center">
-                <div class="col-lg-9">
+                <div class="col-lg-9" data-aos="fade-up" data-aos-delay="400">
                     <p class="lead mb-4">O ARCXNJO AI é um bot Discord completo e avançado, criado para transformar qualquer servidor em um espaço inteligente, divertido e altamente interativo.</p>
                     
-                    <p class="fs-5 mb-5">Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.</p>
+                    <p class="fs-5 mb-5">Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local via Ollama (como gpt-oss:20b-cloud) para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.</p>
 
                     <h4 class="mb-4">Principais características técnicas:</h4>
                     <ul class="feature-list list-unstyled">
-                        <li>🤖 <strong>IA local</strong>: Respostas inteligentes usando modelos potentes rodando na máquina do host.</li>
-                        <li>🖼️ <strong>Geração de imagens</strong>: Integração com Flux e outros modelos para criar artes incríveis a partir de descrições.</li>
-                        <li>🔍 <strong>Análise de arquivos e vídeos</strong>: Lê código, documentos e até analisa vídeos (até 30MB) automaticamente.</li>
-                        <li>😄 <strong>Reações automáticas</strong>: Responde com emojis e interage naturalmente com mensagens.</li>
-                        <li>🌐 <strong>Pesquisas na web</strong>: Busca informações em tempo real via Serper API.</li>
-                        <li>📊 <strong>Logging e histórico</strong>: Registra comandos usados e mantém logs detalhados para monitoramento.</li>
-                        <li>⚡ <strong>Performance otimizada</strong>: Verificação periódica do Ollama, suporte a múltiplos comandos simultâneos e respostas rápidas.</li>
-                        <li>🛡️ <strong>Segurança</strong>: Sem armazenamento de conversas, hospedagem premium e foco em privacidade.</li>
+                        <li data-aos="fade-up" data-aos-delay="100">🤖 <strong>IA local com Ollama</strong>: Respostas inteligentes usando modelos potentes rodando na máquina do host.</li>
+                        <li data-aos="fade-up" data-aos-delay="200">🖼️ <strong>Geração de imagens</strong>: Integração com Flux e outros modelos para criar artes incríveis a partir de descrições.</li>
+                        <li data-aos="fade-up" data-aos-delay="300">🔍 <strong>Análise de arquivos e vídeos</strong>: Lê código, documentos e até analisa vídeos (até 30MB) automaticamente.</li>
+                        <li data-aos="fade-up" data-aos-delay="400">😄 <strong>Reações automáticas</strong>: Responde com emojis e interage naturalmente com mensagens.</li>
+                        <li data-aos="fade-up" data-aos-delay="500">🌐 <strong>Pesquisas na web</strong>: Busca informações em tempo real via Serper API.</li>
+                        <li data-aos="fade-up" data-aos-delay="600">📊 <strong>Logging e histórico</strong>: Registra comandos usados e mantém logs detalhados para monitoramento.</li>
+                        <li data-aos="fade-up" data-aos-delay="700">⚡ <strong>Performance otimizada</strong>: Verificação periódica do Ollama, suporte a múltiplos comandos simultâneos e respostas rápidas.</li>
+                        <li data-aos="fade-up" data-aos-delay="800">🛡️ <strong>Segurança</strong>: Sem armazenamento de conversas, hospedagem premium e foco em privacidade.</li>
                     </ul>
 
                     <p class="mt-5 fs-5">O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.</p>
@@ -72,6 +78,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script> AOS.init({ duration: 1000, once: true }); </script>
+    <script> AOS.init({ duration: 1500, once: true }); </script>
 </body>
 </html>

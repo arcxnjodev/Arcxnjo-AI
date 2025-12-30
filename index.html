@@ -9,30 +9,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { 
-            background-color: #0a0a0a; 
-            color: #e0e0e0; 
-            min-height: 100vh; 
-            overflow-x: hidden; 
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        header, footer { background-color: #111; }
+
+        header, footer {
+            background-color: #111;
+        }
+
         .hero {
             position: relative;
             min-height: 90vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://moewalls.com/landscape/fantasy-valley-under-swirling-skies-live-wallpaper/') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('') center/cover no-repeat;
             color: white;
         }
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
-        .btn-primary { background-color: #5865F2; border: none; padding: 15px 40px; font-size: 1.2rem; transition: all 0.3s; }
-        .btn-primary:hover { background-color: #4752c4; transform: scale(1.05); }
-        nav a { color: #bbb !important; transition: color 0.3s; }
-        nav a:hover { color: #fff !important; }
-        .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
-        .custom-emoji-large { width: 80px; height: 80px; vertical-align: middle; margin-left: 15px; }
-        #language-switcher { background: #222; border: none; color: white; padding: 8px 12px; border-radius: 8px; margin-right: 20px; }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .btn-primary {
+            background-color: #5865F2;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #4752c4;
+                transform: scale(1.05);
+            }
+
+        nav a {
+            color: #bbb !important;
+            transition: color 0.3s;
+        }
+
+            nav a:hover {
+                color: #fff !important;
+            }
+
+        .custom-emoji {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        .custom-emoji-large {
+            width: 80px;
+            height: 80px;
+            vertical-align: middle;
+            margin-left: 15px;
+        }
+
+        #language-switcher {
+            background: #222;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
 
         #music-player {
             position: fixed;
@@ -46,7 +95,7 @@
             border-radius: 10px;
             z-index: 1000;
         }
-        
+
         #music-info {
             color: #8aa0ff;
             font-size: 0.85rem;
@@ -55,20 +104,21 @@
             transition: 0.3s;
             white-space: nowrap;
         }
-        
-        #music-info:hover {
-            opacity: 1;
-            color: #b9c7ff;
-            text-shadow: 0 0 10px #5865F2;
-        }
-        /* Tela de entrada */
+
+            #music-info:hover {
+                opacity: 1;
+                color: #b9c7ff;
+                text-shadow: 0 0 10px #5865F2;
+            }
+
+        /* Tela de entrada corrigida com vídeo */
         #enter-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://moewalls.com/landscape/fantasy-valley-under-swirling-skies-live-wallpaper/' target='_blank'><img src='https://cdn.pixabay.com/video/2020/11/28/57647-486227472_large.mp4') center/cover no-repeat;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -76,230 +126,210 @@
             cursor: pointer;
             transition: opacity 1s ease;
         }
-        #enter-screen h2 {
-            font-size: 3rem;
-            color: white;
-            text-shadow: 0 0 20px #5865F2;
+
+        #enter-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
         }
 
-        /* Player música */
-        #music-player {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            background: rgba(0,0,0,0.7);
-            padding: 10px;
-            border-radius: 10px;
-            z-index: 1000;
+        #enter-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1;
         }
-        #music-icon {
-            font-size: 1.5rem;
-            color: #5865F2;
-            cursor: pointer;
-            margin-right: 10px;
+
+        #enter-text {
+            z-index: 2;
+            color: white;
+            text-align: center;
         }
-        #volume-slider {
-            width: 100px;
-            accent-color: #5865F2;
-        }
+
+            #enter-text h2 {
+                font-size: 3rem;
+                text-shadow: 0 0 20px #5865F2;
+            }
     </style>
 </head>
 <body>
-
-<!-- Tela de entrada -->
-<div id="enter-screen">
-    <h2>Clique para entrar</h2>
-</div>
-
-<header class="py-3 shadow-sm fixed-top">
-    <div class="container d-flex justify-content-between align-items-center">
-        <h1 class="h4 mb-0 fw-bold">ARCXNJO AI 
-            <img src="https://emoji.discadia.com/emojis/26ec1233-f81b-4ed7-8e6d-4bc41e9d81e7.gif" class="custom-emoji">
-        </h1>
-
-        <div class="d-flex align-items-center">
-            <select id="language-switcher" onchange="changeLanguage(this.value)">
-                <option value="pt">🇧🇷</option>
-                <option value="en">🇺🇸</option>
-                <option value="es">🇪🇸</option>
-            </select>
-
-            <nav>
-                <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
-                <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
-                <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
-                <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
-                <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
-            </nav>
+    <!-- Tela de entrada com vídeo -->
+    <div id="enter-screen">
+        <video id="enter-video" autoplay muted loop playsinline>
+            <source src="https://pixabay.com/pt/videos/lofi-frio-natureza-gato-270507/" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
+        <div id="enter-overlay"></div>
+        <div id="enter-text">
+            <h2>Clique para entrar</h2>
         </div>
     </div>
-</header>
 
-<section class="hero text-center">
-    <div id="particles-js"></div>
-    <div class="container position-relative">
-        <h2 class="display-2 fw-bold mb-4" data-aos="fade-up">
-            ARCXNJO AI 
-            <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" class="custom-emoji-large">
-        </h2>
+    <header class="py-3 shadow-sm fixed-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h4 mb-0 fw-bold">
+                ARCXNJO AI
+                <img src="https://emoji.discadia.com/emojis/26ec1233-f81b-4ed7-8e6d-4bc41e9d81e7.gif" class="custom-emoji">
+            </h1>
+            <div class="d-flex align-items-center">
+                <select id="language-switcher" onchange="changeLanguage(this.value)">
+                    <option value="pt">🇧🇷</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="es">🇪🇸</option>
+                </select>
+                <nav>
+                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
+                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
+                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
+                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
+                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-        <p class="lead fs-3 mb-5" data-i18n="subtitle">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
+    <section class="hero text-center">
+        <div id="particles-js"></div>
+        <div class="container position-relative">
+            <h2 class="display-2 fw-bold mb-4" data-aos="fade-up">
+                ARCXNJO AI
+                <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" class="custom-emoji-large">
+            </h2>
+            <p class="lead fs-3 mb-5" data-i18n="subtitle">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
+            <p class="fs-5 mb-5 opacity-80" data-i18n="description">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
+               target="_blank"
+               class="btn btn-primary btn-lg shadow-lg">
+                <i class="fab fa-discord me-2"></i>
+                <span data-i18n="invite">Convidar o Bot Agora</span>
+            </a>
+        </div>
+    </section>
 
-        <p class="fs-5 mb-5 opacity-80" data-i18n="description">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
+    <footer class="py-4 text-center">
+        <small data-i18n="footer">© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial</small>
+    </footer>
 
-        <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands" 
-           target="_blank" 
-           class="btn btn-primary btn-lg shadow-lg">
-            <i class="fab fa-discord me-2"></i> 
-            <span data-i18n="invite">Convidar o Bot Agora</span>
+    <!-- Música -->
+    <audio id="bg-music" loop>
+        <source src="https://files.catbox.moe/23u58w.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-player">
+        <i id="music-icon" class="fas fa-play"></i>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+        <a id="music-info"
+           href="https://open.spotify.com/intl-pt/track/0zDK7gAioDcF4g4eEpWYka?si=f9e45183a08e4d2b"
+           target="_blank">
+            <img src="https://emoji.discadia.com/emojis/d684a0d9-9759-4a91-8e3b-cc6acaa32f1b.png" class="custom-emoji"> simple. – coldbrew
         </a>
     </div>
-</section>
 
-<footer class="py-4 text-center">
-    <small data-i18n="footer">© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial</small>
-</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        /* Animações */
+        AOS.init({ duration: 1500, once: true });
+        /* Partículas */
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80 },
+                color: { value: "#5865F2" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: { enable: true, distance: 150, color: "#5865F2", opacity: 0.4 },
+                move: { enable: true, speed: 2 }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" } }
+            }
+        });
+        /* Tela de entrada */
+        const enterScreen = document.getElementById('enter-screen');
+        const music = document.getElementById('bg-music');
+        const icon = document.getElementById('music-icon');
+        const volumeSlider = document.getElementById('volume-slider');
+        music.volume = 0.1;
 
-<!-- Música -->
-<audio id="bg-music" loop>
-    <source src="https://files.catbox.moe/23u58w.mp3" type="audio/mpeg">
-</audio>
-
-<div id="music-player">
-    <i id="music-icon" class="fas fa-play"></i>
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
-
-    <a id="music-info" 
-       href="https://open.spotify.com/intl-pt/track/0zDK7gAioDcF4g4eEpWYka?si=f9e45183a08e4d2b" 
-       target="_blank">
-       <img src="https://emoji.discadia.com/emojis/d684a0d9-9759-4a91-8e3b-cc6acaa32f1b.png" class="custom-emoji"> simple. – coldbrew
-    </a>
-</div>
- 
-</style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-<script>
-/* Animações */
-AOS.init({ duration: 1500, once: true });
-
-/* Partículas */
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 80 },
-        color: { value: "#5865F2" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3 },
-        line_linked: { enable: true, distance: 150, color: "#5865F2", opacity: 0.4 },
-        move: { enable: true, speed: 2 }
-    },
-    interactivity: {
-        detect_on: "canvas",
-        events: { onhover: { enable: true, mode: "repulse" } }
-    }
-});
-
-/* Tela de entrada */
-const enterScreen = document.getElementById('enter-screen');
-const music = document.getElementById('bg-music');
-const icon = document.getElementById('music-icon');
-const volumeSlider = document.getElementById('volume-slider');
-
-music.volume = 0.1;
-    
-enterScreen.addEventListener('click', () => {
-    enterScreen.style.opacity = "0";
-    setTimeout(() => { enterScreen.style.display = "none"; }, 1000);
-    music.play();
-    icon.classList.replace("fa-play", "fa-pause");
-});
-
-/* Player música */
-icon.addEventListener('click', () => {
-    if (music.paused) {
-        music.play();
-        icon.classList.replace("fa-play", "fa-pause");
-    } else {
-        music.pause();
-        icon.classList.replace("fa-pause", "fa-play");
-    }
-});
-
-volumeSlider.addEventListener('input', () => {
-    music.volume = volumeSlider.value;
-});
-
-/* Traduções */
-const translations = {
-    pt: {
-        inicio: "Início",
-        sobre: "Sobre",
-        funcionalidades: "Funcionalidades",
-        comandos: "Comandos",
-        contato: "Contato",
-        subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
-        description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
-        invite: "Convidar o Bot Agora",
-        footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
-    },
-    en: {
-        inicio: "Home",
-        sobre: "About",
-        funcionalidades: "Features",
-        comandos: "Commands",
-        contato: "Contact",
-        subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
-        description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
-        invite: "Add the Bot Now",
-        footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
-    },
-    es: {
-        inicio: "Inicio",
-        sobre: "Sobre",
-        funcionalidades: "Funcionalidades",
-        comandos: "Comandos",
-        contato: "Contacto",
-        subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
-        description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
-        invite: "Invitar al Bot Ahora",
-        footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
-    }
-};
-
-function changeLanguage(lang) {
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.dataset.i18n;
-        if (translations[lang][key]) {
-            el.textContent = translations[lang][key];
+        enterScreen.addEventListener('click', () => {
+            enterScreen.style.opacity = "0";
+            setTimeout(() => { enterScreen.style.display = "none"; }, 1000);
+            music.play();
+            icon.classList.replace("fa-play", "fa-pause");
+        });
+        /* Player música */
+        icon.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                icon.classList.replace("fa-play", "fa-pause");
+            } else {
+                music.pause();
+                icon.classList.replace("fa-pause", "fa-play");
+            }
+        });
+        volumeSlider.addEventListener('input', () => {
+            music.volume = volumeSlider.value;
+        });
+        /* Traduções */
+        const translations = {
+            pt: {
+                inicio: "Início",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contato",
+                subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
+                description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
+                invite: "Convidar o Bot Agora",
+                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
+            },
+            en: {
+                inicio: "Home",
+                sobre: "About",
+                funcionalidades: "Features",
+                comandos: "Commands",
+                contato: "Contact",
+                subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
+                description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
+                invite: "Add the Bot Now",
+                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
+            },
+            es: {
+                inicio: "Inicio",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contacto: "Contacto",
+                subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
+                description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
+                invite: "Invitar al Bot Ahora",
+                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+            }
+        };
+        function changeLanguage(lang) {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem("language", lang);
         }
-    });
-    localStorage.setItem("language", lang);
-}
-
-const savedLang = localStorage.getItem("language") || "pt";
-document.getElementById("language-switcher").value = savedLang;
-changeLanguage(savedLang);
-
-</script>
-
+        const savedLang = localStorage.getItem("language") || "pt";
+        document.getElementById("language-switcher").value = savedLang;
+        changeLanguage(savedLang);
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

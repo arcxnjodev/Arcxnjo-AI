@@ -283,7 +283,7 @@
                     el.textContent = translations[lang][key];
                 }
             });
-            localStorage.setItem("language", lang);
+            localStorage.setItem('hasEntered', 'false');
         }
         const savedLang = localStorage.getItem("language") || "pt";
         document.getElementById("language-switcher").value = savedLang;
@@ -291,5 +291,6 @@
     </script>
 </body>
 </html>
+
 
 

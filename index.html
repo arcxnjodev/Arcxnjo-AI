@@ -344,55 +344,34 @@
         }
         
         /* - Fundo com efeitos extras */
-        .section {
-        background: linear-gradient(
-        -45deg,
-        #000000,
-        #1a1a1a,
-        #2a0030,
-        #330033,
-        #001a33,
-        #0a0a1a,
-        #222222,
-        #000000
+        /* PASSO 2A - Fundo animado simples */
+         .section {
+           background: linear-gradient(
+            -45deg,
+            #000000,        /* Preto */
+            #1a1a1a,        /* Cinza muito escuro */
+            #2a0030,        /* Roxo escuro */
+            #330033,        /* Roxo médio */
+            #001a33,        /* Azul escuro */
+            #0a0a1a,        /* Azul muito escuro */
+            #222222,        /* Cinza escuro */
+            #000000         /* Preto */
         );
-        background-size: 400% 400%;
-        animation: gradientWave 20s ease infinite;
-        position: relative;
-    }
-    
-        .section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-        radial-gradient(
-            circle at 20% 50%, 
-            rgba(102, 0, 153, 0.1) 0%, 
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 20%, 
-            rgba(0, 51, 153, 0.1) 0%, 
-            transparent 50%
-        );
-        animation: particlesMove 25s ease-in-out infinite;
-        z-index: 1;
-    }
+            background-size: 400% 400%;
+            animation: smoothWave 25s ease infinite;
+        }
 
-        @keyframes gradientWave {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-     }
-        
-        @keyframes particlesMove {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-10px, 10px) scale(1.1); }
-     }
+         @keyframes smoothWave {
+         0% {
+            background-position: 0% 0%;
+        }
+         50% {
+            background-position: 100% 100%;
+        }
+         100% {
+            background-position: 0% 0%;
+        }
+    }   
  </style>
 </head>
 <body>
@@ -1094,6 +1073,7 @@
     </script>
 </body>
 </html>
+
 
 
 

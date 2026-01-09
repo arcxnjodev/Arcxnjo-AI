@@ -9,30 +9,209 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
+        :root {
+            --primary-color: #5865F2;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-color: #e0e0e0;
+            --light-text: #ffffff;
+            --code-bg: #2d2d2d;
+            --code-color: #7cffc4;
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
             min-height: 100vh;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            padding-top: 70px;
         }
-        header, footer { background-color: #111; }
-        .hero {
+
+        header, footer {
+            background-color: #111;
+        }
+
+        /* Navegação */
+        .navbar {
+            background-color: #111 !important;
+            transition: all 0.3s;
+        }
+
+        .navbar-brand img, .custom-emoji {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        .nav-link {
+            color: #bbb !important;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #fff !important;
+        }
+
+        .custom-emoji-large {
+            width: 80px;
+            height: 80px;
+            vertical-align: middle;
+            margin-left: 15px;
+        }
+
+        /* Seções */
+        .section {
+            min-height: 100vh;
+            padding: 100px 0;
             position: relative;
-            min-height: 90vh;
+            overflow: hidden;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://cdn.pixabay.com/video/2025/04/07/270507_large.mp4') center/cover no-repeat;
             display: flex;
             align-items: center;
-            background: <source src="https://cdn.pixabay.com/video/2025/04/07/270507_large.mp4" type="video/mp4"> center/cover no-repeat;
-            color: white;
         }
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
-        .btn-primary { background-color: #5865F2; border: none; padding: 15px 40px; font-size: 1.2rem; transition: all 0.3s; }
-        .btn-primary:hover { background-color: #4752c4; transform: scale(1.05); }
-        nav a { color: #bbb !important; transition: color 0.3s; }
-        nav a:hover { color: #fff !important; }
-        .custom-emoji { width: 40px; height: 40px; vertical-align: middle; margin-left: 8px; }
-        .custom-emoji-large { width: 80px; height: 80px; vertical-align: middle; margin-left: 15px; }
-        #language-switcher { background: #222; border: none; color: white; padding: 8px 12px; border-radius: 8px; margin-right: 20px; }
+
+        /* Sobre Section */
+        #sobre {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://c4.wallpaperflare.com/wallpaper/123/312/5/earth-planet-stars-blue-marble-wallpaper-preview.jpg') center/cover no-repeat;
+        }
+
+        /* Funcionalidades Section */
+        #funcionalidades {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://c4.wallpaperflare.com/wallpaper/125/959/654/multiple-display-space-planet-space-art-wallpaper-preview.jpg') center/cover no-repeat;
+        }
+
+        /* Comandos Section */
+        #comandos {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://c1.wallpaperflare.com/preview/843/461/88/coding-code-programming-screen.jpg') center/cover no-repeat;
+        }
+
+        /* Contato Section */
+        #contato {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://c4.wallpaperflare.com/wallpaper/712/712/13/artwork-map-water-drops-digital-art-wallpaper-preview.jpg') center/cover no-repeat;
+        }
+
+        /* Cards de Funcionalidades */
+        .card-feature {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            transition: all 0.4s;
+            height: 100%;
+            color: var(--light-text);
+        }
+
+        .card-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        /* Cards de Comandos - REVISADO PARA MELHOR VISIBILIDADE */
+        .command-card {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .command-card code {
+            background-color: var(--code-bg);
+            color: var(--code-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .command-card strong {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .command-card .command-desc {
+            color: #d1d1d1;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        /* Listas */
+        .feature-list, .command-list {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature-list li, .command-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+
+        .feature-list strong {
+            color: #ffffff;
+        }
+
+        /* Código */
+        code {
+            background: var(--code-bg);
+            color: var(--code-color);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        /* Botões */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #4752c4;
+            transform: scale(1.05);
+        }
+
+        /* Language Switcher */
+        #language-switcher {
+            background: #222;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        /* Music Player */
         #music-player {
             position: fixed;
             bottom: 20px;
@@ -45,7 +224,7 @@
             border-radius: 10px;
             z-index: 1000;
         }
-       
+
         #music-info {
             color: #8aa0ff;
             font-size: 0.85rem;
@@ -54,61 +233,124 @@
             transition: 0.3s;
             white-space: nowrap;
         }
-       
+
         #music-info:hover {
             opacity: 1;
             color: #b9c7ff;
-            text-shadow: 0 0 10px #5865F2;
+            text-shadow: 0 0 10px var(--primary-color);
         }
-        
+
+        /* Enter Screen */
         #enter-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             cursor: pointer;
             transition: opacity 1s ease;
+            background: #000;
         }
+
         #enter-video {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 85%;
-            min-height: 85%;
-            width: 100%;
-            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: cover;
             transform: translate(-50%, -50%);
-            z-index: -1;
+            z-index: 1;
         }
+
         #enter-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1;
-        }
-        #enter-text {
+            background: rgba(0,0,0,0.7);
             z-index: 2;
+        }
+
+        #enter-text {
+            z-index: 3;
             color: white;
             text-align: center;
         }
-            #enter-text h2 {
-                font-size: 3rem;
-                text-shadow: 0 0 20px #5865F2;
+
+        #enter-text h2 {
+            font-size: 3rem;
+            text-shadow: 0 0 20px var(--primary-color);
+        }
+
+        /* Particles */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+                min-height: auto;
             }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            #enter-text h2 {
+                font-size: 2rem;
+            }
+            
+            .command-card {
+                padding: 15px !important;
+            }
+        }
+
+        /* Melhorias de legibilidade */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff;
+        }
+
+        p, li, span {
+            color: #e0e0e0;
+        }
+
+        .text-muted {
+            color: #aaa !important;
+        }
+
+        /* Scroll personalizado */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     
+    <!-- Enter Screen -->
     <div id="enter-screen">
         <video id="enter-video" autoplay muted loop playsinline>
             <source src="https://cdn.pixabay.com/video/2025/04/07/270507_large.mp4" type="video/mp4">
@@ -116,77 +358,327 @@
         </video>
         <div id="enter-overlay"></div>
         <div id="enter-text">
-            <h2>Clique para entrar</h2>
+            <h2 data-i18n="enter_text">Clique para entrar</h2>
         </div>
     </div>
 
-    <header class="py-3 shadow-sm fixed-top">
-        <div class="container d-flex justify-content-between align-items-center">
-            <h1 class="h4 mb-0 fw-bold">
-                ARCXNJO AI
-                <img src="https://emoji.discadia.com/emojis/26ec1233-f81b-4ed7-8e6d-4bc41e9d81e7.gif" class="custom-emoji">
-            </h1>
-            <div class="d-flex align-items-center">
-                <select id="language-switcher" onchange="changeLanguage(this.value)">
-                    <option value="pt">🇧🇷</option>
-                    <option value="en">🇺🇸</option>
-                    <option value="es">🇪🇸</option>
-                </select>
-                <nav>
-                    <a href="index.html" class="mx-3" data-i18n="inicio">Início</a>
-                    <a href="sobre.html" class="mx-3" data-i18n="sobre">Sobre</a>
-                    <a href="funcionalidades.html" class="mx-3" data-i18n="funcionalidades">Funcionalidades</a>
-                    <a href="comandos.html" class="mx-3" data-i18n="comandos">Comandos</a>
-                    <a href="contato.html" class="mx-3" data-i18n="contato">Contato</a>
-                </nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                ARCXNJO AI <img src="https://emoji.discadia.com/emojis/26ec1233-f81b-4ed7-8e6d-4bc41e9d81e7.gif" class="custom-emoji">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex align-items-center ms-auto">
+                    <select id="language-switcher" onchange="changeLanguage(this.value)">
+                        <option value="pt">🇧🇷 Português</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="es">🇪🇸 Español</option>
+                    </select>
+                    
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home" data-i18n="inicio">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sobre" data-i18n="sobre">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#funcionalidades" data-i18n="funcionalidades">Funcionalidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#comandos" data-i18n="comandos">Comandos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato" data-i18n="contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <section class="hero text-center">
+    <!-- Home Section -->
+    <section id="home" class="section">
         <div id="particles-js"></div>
-        <div class="container position-relative">
+        <div class="container section-content text-center">
             <h2 class="display-2 fw-bold mb-4" data-aos="fade-up">
                 ARCXNJO AI
                 <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" class="custom-emoji-large">
             </h2>
-            <p class="lead fs-3 mb-5" data-i18n="subtitle">O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!</p>
-            <p class="fs-5 mb-5 opacity-80" data-i18n="description">Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!</p>
+            <p class="lead fs-3 mb-5" data-i18n="subtitle" data-aos="fade-up" data-aos-delay="200">
+                O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!
+            </p>
+            <p class="fs-5 mb-5 opacity-80" data-i18n="description" data-aos="fade-up" data-aos-delay="300">
+                Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!
+            </p>
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
                target="_blank"
-               class="btn btn-primary btn-lg shadow-lg">
+               class="btn btn-primary btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="400">
                 <i class="fab fa-discord me-2"></i>
                 <span data-i18n="invite">Convidar o Bot Agora</span>
             </a>
         </div>
     </section>
 
-    <footer class="py-4 text-center">
-        <small data-i18n="footer">© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial</small>
+    <!-- Sobre Section -->
+    <section id="sobre" class="section">
+        <div class="container section-content">
+            <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="about_title">
+                Sobre o ARCXNJO AI <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" alt="blob" class="custom-emoji">
+            </h3>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+                    <p class="lead mb-4 text-center" data-i18n="about_desc1">
+                        O ARCXNJO AI é um bot Discord completo e avançado, criado para transformar qualquer servidor em um espaço inteligente, divertido e altamente interativo.
+                    </p>
+                    
+                    <p class="fs-5 mb-5 text-center" data-i18n="about_desc2">
+                        Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local via Ollama (como gpt-oss:20b-cloud) para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.
+                    </p>
+
+                    <h4 class="mb-4 text-center" data-i18n="tech_features">Principais características técnicas:</h4>
+                    
+                    <ul class="feature-list list-unstyled">
+                        <li data-aos="fade-up" data-aos-delay="100">🤖 <strong data-i18n="feature1_title">IA local com Ollama</strong>: <span data-i18n="feature1_desc">Respostas inteligentes usando modelos potentes rodando na máquina do host.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="200">🖼️ <strong data-i18n="feature2_title">Geração de imagens</strong>: <span data-i18n="feature2_desc">Integração com Flux e outros modelos para criar artes incríveis a partir de descrições.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="300">🔍 <strong data-i18n="feature3_title">Análise de arquivos e vídeos</strong>: <span data-i18n="feature3_desc">Lê código, documentos e até analisa vídeos (até 30MB) automaticamente.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="400">😄 <strong data-i18n="feature4_title">Reações automáticas</strong>: <span data-i18n="feature4_desc">Responde com emojis e interage naturalmente com mensagens.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="500">🌐 <strong data-i18n="feature5_title">Pesquisas na web</strong>: <span data-i18n="feature5_desc">Busca informações em tempo real via Serper API.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="600">📊 <strong data-i18n="feature6_title">Logging e histórico</strong>: <span data-i18n="feature6_desc">Registra comandos usados e mantém logs detalhados para monitoramento.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="700">⚡ <strong data-i18n="feature7_title">Performance otimizada</strong>: <span data-i18n="feature7_desc">Verificação periódica do Ollama, suporte a múltiplos comandos simultâneos e respostas rápidas.</span></li>
+                        <li data-aos="fade-up" data-aos-delay="800">🛡️ <strong data-i18n="feature8_title">Segurança</strong>: <span data-i18n="feature8_desc">Sem armazenamento de conversas, hospedagem premium e foco em privacidade.</span></li>
+                    </ul>
+
+                    <!-- CORREÇÃO AQUI: Adicionei data-aos nesta linha -->
+                    <p class="mt-5 fs-5 text-center" data-aos="fade-up" data-aos-delay="900" data-i18n="about_conclusion">
+                        O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Section -->
+    <section id="funcionalidades" class="section">
+        <div class="container section-content">
+            <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="features_title">Funcionalidades Incríveis</h3>
+            
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card-feature text-center p-5 rounded h-100">
+                        <img src="https://emoji.discadia.com/emojis/50582d45-6ad5-4bc0-b512-212ff0c0b211.GIF" alt="blob" class="custom-emoji">
+                        <h5 class="mt-3 text-white" data-i18n="func1_title">IA Conversacional</h5>
+                        <p data-i18n="func1_desc">Respostas inteligentes e contextualizadas em tempo real.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-feature text-center p-5 rounded h-100">
+                        <img src="https://emoji.discadia.com/emojis/a2986908-d435-429e-b655-ba9292530857.gif" alt="blob" class="custom-emoji">
+                        <h5 class="mt-3 text-white" data-i18n="func2_title">Geração de Imagens</h5>
+                        <p data-i18n="func2_desc">Crie artes incríveis com IA diretamente no chat.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-feature text-center p-5 rounded h-100">
+                        <img src="https://emoji.discadia.com/emojis/498fc1a2-b4cd-481e-9eba-73eb5cbc870d.gif" alt="blob" class="custom-emoji">
+                        <h5 class="mt-3 text-white" data-i18n="func3_title">Memes e Diversão</h5>
+                        <p data-i18n="func3_desc">Comandos para memes automáticos e interações leves.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-feature text-center p-5 rounded h-100">
+                        <img src="https://emoji.discadia.com/emojis/030e74d7-4035-48a5-9166-30b06d0c7d8b.GIF" alt="blob" class="custom-emoji">
+                        <h5 class="mt-3 text-white" data-i18n="func4_title">Pesquisas Avançadas</h5>
+                        <p data-i18n="func4_desc">Busque web, notícias, clima e mais sem sair do Discord.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-feature text-center p-5 rounded h-100">
+                        <img src="https://emoji.discadia.com/emojis/9627ff12-7b11-453a-94ca-ed83dd83ed67.GIF" alt="blob" class="custom-emoji">
+                        <h5 class="mt-3 text-white" data-i18n="func5_title">Música e Moderação</h5>
+                        <p data-i18n="func5_desc">Player de música, níveis, economia e ferramentas de mod.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-feature text-center p-5 rounded h-100">
+                        <img src="https://emoji.discadia.com/emojis/1591665f-cc64-4203-af17-1681c6b8674c.png" alt="blob" class="custom-emoji">
+                        <h5 class="mt-3 text-white" data-i18n="func6_title">Segurança Máxima</h5>
+                        <p data-i18n="func6_desc">Hospedado em servidores premium, sem rastreamento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comandos Section - CORRIGIDA PARA MELHOR VISIBILIDADE -->
+    <section id="comandos" class="section">
+        <div class="container section-content">
+            <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="commands_title">Comandos do ARCXNJO AI</h3>
+            
+            <p class="mb-5 fs-5 text-center text-white" data-aos="fade-up" data-aos-delay="100" data-i18n="commands_desc">
+                Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).
+            </p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Comando 1 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="command-header mb-3">
+                            <code>/chat [pergunta]</code>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd1_desc">Conversa com a IA avançada (Grok, GPT-4o, Claude, Flux etc.). Respostas inteligentes e contextualizadas em tempo real.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Comando 2 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="250">
+                        <div class="command-header mb-3">
+                            <code>/imagem [descrição]</code>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd2_desc">Gera imagens incríveis com IA a partir da sua descrição. Suporta vários estilos e modelos avançados.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Comando 3 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="command-header mb-3">
+                            <code>/meme [texto superior] | [texto inferior]</code>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd3_desc">Cria memes personalizados com templates populares. Use "|" para separar texto superior e inferior.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Comando 4 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="350">
+                        <div class="command-header mb-3">
+                            <code>/pesquisar [tópico]</code>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd4_desc">Pesquisa na web em tempo real (notícias, clima, informações gerais) usando Serper API.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Comando 5 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="command-header mb-3">
+                            <code>/ajuda</code> ou <code>/comandos</code>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd5_desc">Mostra a lista completa de comandos disponíveis.</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Comando 6 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="450">
+                        <div class="command-header mb-3">
+                            <strong data-i18n="cmd6_title">Análise de arquivos</strong>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd6_desc">Envie arquivos (código, documentos, imagens até 100MB, vídeos até 30MB) e o bot analisa automaticamente (explica código, descreve imagens/vídeos).</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Comando 7 -->
+                    <div class="command-card p-4 rounded mb-4" data-aos="fade-up" data-aos-delay="500">
+                        <div class="command-header mb-3">
+                            <strong data-i18n="cmd7_title">Reações automáticas</strong>
+                        </div>
+                        <div class="command-desc">
+                            <span data-i18n="cmd7_desc">O bot reage com emojis inteligentes às mensagens do servidor (diversão e interação natural).</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="mt-5 text-center text-white" data-aos="fade-up" data-aos-delay="550" data-i18n="commands_note">
+                Todos os comandos são slash commands (/) e funcionam em servidores e DMs!
+            </p>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="section">
+        <div class="container section-content text-center">
+            <h3 class="mb-5 fw-bold text-white" data-aos="fade-up" data-i18n="contact_title">Junte-se à Comunidade</h3>
+            
+            <p class="fs-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <i class="fab fa-discord me-2 text-primary"></i> 
+                <span data-i18n="contact_support">Suporte: </span>
+                <a href="https://discord.gg/HDWV2EVz" class="text-decoration-none text-info fw-bold">
+                    discord.gg/ArcxnjoAICommunity
+                </a>
+                <img src="https://emoji.discadia.com/emojis/71108160-fcff-4ded-894d-56dbbcc43ff8.GIF" alt="blob" class="custom-emoji ms-2">
+            </p>
+            
+            <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
+               target="_blank" 
+               class="btn btn-primary btn-lg mt-4" 
+               data-aos="zoom-in" 
+               data-aos-delay="400" 
+               data-i18n="invite_bot">
+                <i class="fab fa-discord me-2"></i> Adicionar ao Meu Servidor
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center bg-dark">
+        <small data-i18n="footer" class="text-white">
+            © 2025 ARCXNJO AI 
+            <img src="https://cdn.discordapp.com/emojis/858481355108646962.webp?size=96&animated=true" alt="blob" class="custom-emoji"> 
+            – Feito com ❤️ e Inteligência Artificial
+        </small>
     </footer>
 
-    <!-- Música -->
+    <!-- Music Player -->
     <audio id="bg-music" loop>
         <source src="https://files.catbox.moe/23u58w.mp3" type="audio/mpeg">
     </audio>
 
     <div id="music-player">
-        <i id="music-icon" class="fas fa-play"></i>
+        <i id="music-icon" class="fas fa-play cursor-pointer text-white"></i>
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
         <a id="music-info"
            href="https://open.spotify.com/intl-pt/track/0zDK7gAioDcF4g4eEpWYka?si=f9e45183a08e4d2b"
-           target="_blank">
+           target="_blank" class="text-decoration-none">
             <img src="https://emoji.discadia.com/emojis/d684a0d9-9759-4a91-8e3b-cc6acaa32f1b.png" class="custom-emoji"> simple. – coldbrew
         </a>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-       
-        AOS.init({ duration: 1500, once: true });
-       
+        // Inicializa AOS
+        AOS.init({ 
+            duration: 1200, 
+            once: true,
+            offset: 100 
+        });
+
+        // Inicializa Particles.js
         particlesJS("particles-js", {
             particles: {
                 number: { value: 80 },
@@ -194,39 +686,319 @@
                 shape: { type: "circle" },
                 opacity: { value: 0.5 },
                 size: { value: 3 },
-                line_linked: { enable: true, distance: 150, color: "#5865F2", opacity: 0.4 },
-                move: { enable: true, speed: 2 }
+                line_linked: { 
+                    enable: true, 
+                    distance: 150, 
+                    color: "#5865F2", 
+                    opacity: 0.4 
+                },
+                move: { 
+                    enable: true, 
+                    speed: 2 
+                }
             },
             interactivity: {
                 detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "repulse" } }
+                events: { 
+                    onhover: { 
+                        enable: true, 
+                        mode: "repulse" 
+                    } 
+                }
             }
         });
 
-        
+        // Sistema de tradução ATUALIZADO para comandos
+        const translations = {
+            pt: {
+                // Navbar
+                inicio: "Início",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contato",
+                
+                // Home
+                enter_text: "Clique para entrar",
+                subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
+                description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
+                invite: "Convidar o Bot Agora",
+                
+                // Sobre
+                about_title: "Sobre o ARCXNJO AI",
+                about_desc1: "O ARCXNJO AI é um bot Discord completo e avançado, criado para transformar qualquer servidor em um espaço inteligente, divertido e altamente interativo.",
+                about_desc2: "Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local via Ollama (como gpt-oss:20b-cloud) para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.",
+                tech_features: "Principais características técnicas:",
+                feature1_title: "IA local com Ollama",
+                feature1_desc: "Respostas inteligentes usando modelos potentes rodando na máquina do host.",
+                feature2_title: "Geração de imagens",
+                feature2_desc: "Integração com Flux e outros modelos para criar artes incríveis a partir de descrições.",
+                feature3_title: "Análise de arquivos e vídeos",
+                feature3_desc: "Lê código, documentos e até analisa vídeos (até 30MB) automaticamente.",
+                feature4_title: "Reações automáticas",
+                feature4_desc: "Responde com emojis e interage naturalmente com mensagens.",
+                feature5_title: "Pesquisas na web",
+                feature5_desc: "Busca informações em tempo real via Serper API.",
+                feature6_title: "Logging e histórico",
+                feature6_desc: "Registra comandos usados e mantém logs detalhados para monitoramento.",
+                feature7_title: "Performance otimizada",
+                feature7_desc: "Verificação periódica do Ollama, suporte a múltiplos comandos simultâneos e respostas rápidas.",
+                feature8_title: "Segurança",
+                feature8_desc: "Sem armazenamento de conversas, hospedagem premium e foco em privacidade.",
+                about_conclusion: "O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.",
+                
+                // Funcionalidades
+                features_title: "Funcionalidades Incríveis",
+                func1_title: "IA Conversacional",
+                func1_desc: "Respostas inteligentes e contextualizadas em tempo real.",
+                func2_title: "Geração de Imagens",
+                func2_desc: "Crie artes incríveis com IA diretamente no chat.",
+                func3_title: "Memes e Diversão",
+                func3_desc: "Comandos para memes automáticos e interações leves.",
+                func4_title: "Pesquisas Avançadas",
+                func4_desc: "Busque web, notícias, clima e mais sem sair do Discord.",
+                func5_title: "Música e Moderação",
+                func5_desc: "Player de música, níveis, economia e ferramentas de mod.",
+                func6_title: "Segurança Máxima",
+                func6_desc: "Hospedado em servidores premium, sem rastreamento.",
+                
+                // Comandos - TEXTOS COMPLETOS PARA CADA COMANDO
+                commands_title: "Comandos do ARCXNJO AI",
+                commands_desc: "Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).",
+                cmd1_desc: "Conversa com a IA avançada (Grok, GPT-4o, Claude, Flux etc.). Respostas inteligentes e contextualizadas em tempo real.",
+                cmd2_desc: "Gera imagens incríveis com IA a partir da sua descrição. Suporta vários estilos e modelos avançados.",
+                cmd3_desc: "Cria memes personalizados com templates populares. Use '|' para separar texto superior e inferior.",
+                cmd4_desc: "Pesquisa na web em tempo real (notícias, clima, informações gerais) usando Serper API.",
+                cmd5_desc: "Mostra a lista completa de comandos disponíveis.",
+                cmd6_title: "Análise de arquivos",
+                cmd6_desc: "Envie arquivos (código, documentos, imagens até 100MB, vídeos até 30MB) e o bot analisa automaticamente (explica código, descreve imagens/vídeos).",
+                cmd7_title: "Reações automáticas",
+                cmd7_desc: "O bot reage com emojis inteligentes às mensagens do servidor (diversão e interação natural).",
+                commands_note: "Todos os comandos são slash commands (/) e funcionam em servidores e DMs!",
+                
+                // Contato
+                contact_title: "Junte-se à Comunidade",
+                contact_support: "Suporte: ",
+                invite_bot: "Adicionar ao Meu Servidor",
+                
+                // Footer
+                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
+            },
+            en: {
+                // Navbar
+                inicio: "Home",
+                sobre: "About",
+                funcionalidades: "Features",
+                comandos: "Commands",
+                contato: "Contact",
+                
+                // Home
+                enter_text: "Click to enter",
+                subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
+                description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
+                invite: "Add the Bot Now",
+                
+                // Sobre
+                about_title: "About ARCXNJO AI",
+                about_desc1: "ARCXNJO AI is a complete and advanced Discord bot, created to transform any server into an intelligent, fun and highly interactive space.",
+                about_desc2: "Developed in Python with discord.py, the bot uses local AI models via Ollama (like gpt-oss:20b-cloud) for fast and private responses, without sending data to external servers. This guarantees speed, security and total privacy – your conversations are never logged.",
+                tech_features: "Main technical features:",
+                feature1_title: "Local AI with Ollama",
+                feature1_desc: "Intelligent responses using powerful models running on the host machine.",
+                feature2_title: "Image generation",
+                feature2_desc: "Integration with Flux and other models to create amazing art from descriptions.",
+                feature3_title: "File and video analysis",
+                feature3_desc: "Reads code, documents and even analyzes videos (up to 30MB) automatically.",
+                feature4_title: "Automatic reactions",
+                feature4_desc: "Responds with emojis and interacts naturally with messages.",
+                feature5_title: "Web searches",
+                feature5_desc: "Searches for information in real time via Serper API.",
+                feature6_title: "Logging and history",
+                feature6_desc: "Records commands used and keeps detailed logs for monitoring.",
+                feature7_title: "Optimized performance",
+                feature7_desc: "Periodic Ollama verification, support for multiple simultaneous commands and fast responses.",
+                feature8_title: "Security",
+                feature8_desc: "No conversation storage, premium hosting and focus on privacy.",
+                about_conclusion: "ARCXNJO AI is perfect for study servers, programming, fun or large communities – brings cutting-edge artificial intelligence directly to your Discord, in a safe and fun way.",
+                
+                // Funcionalidades
+                features_title: "Amazing Features",
+                func1_title: "Conversational AI",
+                func1_desc: "Intelligent and contextual responses in real time.",
+                func2_title: "Image Generation",
+                func2_desc: "Create amazing art with AI directly in the chat.",
+                func3_title: "Memes and Fun",
+                func3_desc: "Commands for automatic memes and light interactions.",
+                func4_title: "Advanced Searches",
+                func4_desc: "Search web, news, weather and more without leaving Discord.",
+                func5_title: "Music and Moderation",
+                func5_desc: "Music player, levels, economy and mod tools.",
+                func6_title: "Maximum Security",
+                func6_desc: "Hosted on premium servers, no tracking.",
+                
+                // Comandos - TEXTOS COMPLETOS EM INGLÊS
+                commands_title: "ARCXNJO AI Commands",
+                commands_desc: "Here are all the commands available for regular users (no admin commands).",
+                cmd1_desc: "Chat with advanced AI (Grok, GPT-4o, Claude, Flux etc.). Intelligent and contextual responses in real time.",
+                cmd2_desc: "Generate amazing images with AI from your description. Supports various styles and advanced models.",
+                cmd3_desc: "Create custom memes with popular templates. Use '|' to separate top and bottom text.",
+                cmd4_desc: "Real-time web search (news, weather, general info) using Serper API.",
+                cmd5_desc: "Shows the full list of available commands.",
+                cmd6_title: "File analysis",
+                cmd6_desc: "Send files (code, documents, images up to 100MB, videos up to 30MB) and the bot analyzes them automatically (explains code, describes images/videos).",
+                cmd7_title: "Automatic reactions",
+                cmd7_desc: "The bot reacts with smart emojis to server messages (fun and natural interaction).",
+                commands_note: "All commands are slash commands (/) and work in servers and DMs!",
+                
+                // Contato
+                contact_title: "Join the Community",
+                contact_support: "Support: ",
+                invite_bot: "Add to My Server",
+                
+                // Footer
+                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
+            },
+            es: {
+                // Navbar
+                inicio: "Inicio",
+                sobre: "Sobre",
+                funcionalidades: "Funcionalidades",
+                comandos: "Comandos",
+                contato: "Contacto",
+                
+                // Home
+                enter_text: "Haz clic para entrar",
+                subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
+                description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
+                invite: "Invitar al Bot Ahora",
+                
+                // Sobre
+                about_title: "Sobre ARCXNJO AI",
+                about_desc1: "ARCXNJO AI es un bot de Discord completo y avanzado, creado para transformar cualquier servidor en un espacio inteligente, divertido y altamente interactivo.",
+                about_desc2: "Desarrollado en Python con discord.py, el bot utiliza modelos de IA local a través de Ollama (como gpt-oss:20b-cloud) para respuestas rápidas y privadas, sin enviar datos a servidores externos. Esto garantiza velocidad, seguridad y privacidad total – tus conversaciones nunca se registran.",
+                tech_features: "Principales características técnicas:",
+                feature1_title: "IA local con Ollama",
+                feature1_desc: "Respuestas inteligentes usando modelos potentes que se ejecutan en la máquina del host.",
+                feature2_title: "Generación de imágenes",
+                feature2_desc: "Integración con Flux y otros modelos para crear arte increíble a partir de descripciones.",
+                feature3_title: "Análisis de archivos y videos",
+                feature3_desc: "Lee código, documentos e incluso analiza videos (hasta 30MB) automáticamente.",
+                feature4_title: "Reacciones automáticas",
+                feature4_desc: "Responde con emojis e interactúa naturalmente con los mensajes.",
+                feature5_title: "Búsquedas web",
+                feature5_desc: "Busca información en tiempo real a través de Serper API.",
+                feature6_title: "Registro e historial",
+                feature6_desc: "Registra comandos utilizados y mantiene registros detallados para monitoreo.",
+                feature7_title: "Rendimiento optimizado",
+                feature7_desc: "Verificación periódica de Ollama, soporte para múltiples comandos simultáneos y respuestas rápidas.",
+                feature8_title: "Seguridad",
+                feature8_desc: "Sin almacenamiento de conversaciones, alojamiento premium y enfoque en la privacidad.",
+                about_conclusion: "ARCXNJO AI es perfecto para servidores de estudio, programación, diversión o comunidades grandes – lleva inteligencia artificial de vanguardia directamente a tu Discord, de forma segura y divertida.",
+                
+                // Funcionalidades
+                features_title: "Funcionalidades Increíbles",
+                func1_title: "IA Conversacional",
+                func1_desc: "Respuestas inteligentes y contextualizadas en tiempo real.",
+                func2_title: "Generación de Imágenes",
+                func2_desc: "Crea artes increíbles con IA directamente en el chat.",
+                func3_title: "Memes y Diversión",
+                func3_desc: "Comandos para memes automáticos e interacciones ligeras.",
+                func4_title: "Búsquedas Avanzadas",
+                func4_desc: "Busca web, noticias, clima y más sin salir de Discord.",
+                func5_title: "Música y Moderación",
+                func5_desc: "Reproductor de música, niveles, economía y herramientas de mod.",
+                func6_title: "Segurança Máxima",
+                func6_desc: "Hospedado en servidores premium, sin rastreo.",
+                
+                // Comandos - TEXTOS COMPLETOS EM ESPANHOL
+                commands_title: "Comandos de ARCXNJO AI",
+                commands_desc: "Aquí están todos los comandos disponibles para usuarios comunes (sin comandos de administrador).",
+                cmd1_desc: "Conversación con IA avanzada (Grok, GPT-4o, Claude, Flux etc.). Respuestas inteligentes y contextualizadas en tiempo real.",
+                cmd2_desc: "Genera imágenes increíbles con IA a partir de tu descripción. Soporta varios estilos y modelos avanzados.",
+                cmd3_desc: "Crea memes personalizados con templates populares. Usa '|' para separar texto superior e inferior.",
+                cmd4_desc: "Búsqueda en la web en tiempo real (noticias, clima, información general) usando Serper API.",
+                cmd5_desc: "Muestra la lista completa de comandos disponibles.",
+                cmd6_title: "Análisis de archivos",
+                cmd6_desc: "Envía archivos (código, documentos, imágenes hasta 100MB, videos hasta 30MB) y el bot los analiza automáticamente (explica código, describe imágenes/videos).",
+                cmd7_title: "Reacciones automáticas",
+                cmd7_desc: "El bot reacciona con emojis inteligentes a los mensajes del servidor (diversión e interacción natural).",
+                commands_note: "Todos los comandos son slash commands (/) y funcionan en servidores y DMs!",
+                
+                // Contato
+                contact_title: "Únete a la Comunidad",
+                contact_support: "Soporte: ",
+                invite_bot: "Añadir al Servidor",
+                
+                // Footer
+                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
+            }
+        };
+
+        // Função para trocar idioma
+        function changeLanguage(lang) {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem('language', lang);
+        }
+
+        // Navegação suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Atualiza navbar ativa
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Scroll suave
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Sistema de música
         const enterScreen = document.getElementById('enter-screen');
         const music = document.getElementById('bg-music');
         const icon = document.getElementById('music-icon');
         const volumeSlider = document.getElementById('volume-slider');
-        music.volume = 0.1;
-
         
+        // Configura volume inicial
+        music.volume = 0.1;
+        volumeSlider.value = 0.1;
+
+        // Verifica se já entrou antes
         if (localStorage.getItem('hasEntered') === 'true') {
-            enterScreen.style.display = 'none'; 
-            music.play(); 
+            enterScreen.style.display = 'none';
+            music.play();
             icon.classList.replace("fa-play", "fa-pause");
         } else {
-            
             enterScreen.addEventListener('click', () => {
                 enterScreen.style.opacity = "0";
-                setTimeout(() => { enterScreen.style.display = "none"; }, 1000);
+                setTimeout(() => {
+                    enterScreen.style.display = "none";
+                }, 1000);
+                
                 music.play();
                 icon.classList.replace("fa-play", "fa-pause");
-                localStorage.setItem('hasEntered', 'true'); 
+                localStorage.setItem('hasEntered', 'true');
             });
         }
 
-        
+        // Controles de música
         icon.addEventListener('click', () => {
             if (music.paused) {
                 music.play();
@@ -236,63 +1008,42 @@
                 icon.classList.replace("fa-pause", "fa-play");
             }
         });
+
         volumeSlider.addEventListener('input', () => {
             music.volume = volumeSlider.value;
         });
 
-        /* Traduções */
-        const translations = {
-            pt: {
-                inicio: "Início",
-                sobre: "Sobre",
-                funcionalidades: "Funcionalidades",
-                comandos: "Comandos",
-                contato: "Contato",
-                subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
-                description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
-                invite: "Convidar o Bot Agora",
-                footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
-            },
-            en: {
-                inicio: "Home",
-                sobre: "About",
-                funcionalidades: "Features",
-                comandos: "Commands",
-                contato: "Contact",
-                subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
-                description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
-                invite: "Add the Bot Now",
-                footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
-            },
-            es: {
-                inicio: "Inicio",
-                sobre: "Sobre",
-                funcionalidades: "Funcionalidades",
-                comandos: "Comandos",
-                contacto: "Contacto",
-                subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
-                description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
-                invite: "Invitar al Bot Ahora",
-                footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
-            }
-        };
-        function changeLanguage(lang) {
-            document.querySelectorAll("[data-i18n]").forEach(el => {
-                const key = el.dataset.i18n;
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+        // Atualiza navbar ao scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
                 }
             });
-            localStorage.setItem('hasEntered', 'false');
-        }
-        const savedLang = localStorage.getItem("language") || "pt";
-        document.getElementById("language-switcher").value = savedLang;
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Carrega idioma salvo
+        const savedLang = localStorage.getItem('language') || 'pt';
+        document.getElementById('language-switcher').value = savedLang;
         changeLanguage(savedLang);
+
+        // Inicializa navbar ativa
+        window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
 </html>
-
-
-
-
-

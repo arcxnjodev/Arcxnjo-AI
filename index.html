@@ -10,13 +10,18 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-color: #5865F2;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --text-color: #e0e0e0;
-            --light-text: #ffffff;
-            --code-bg: #2d2d2d;
-            --code-color: #7cffc4;
+            --primary-color: #6C63FF;
+            --secondary-color: #36D1DC;
+            --accent-color: #FF6B9D;
+            --dark-bg: #0A0B14;
+            --card-bg: rgba(26, 27, 40, 0.8);
+            --text-color: #E6E6FA;
+            --light-text: #FFFFFF;
+            --neon-blue: #5D9CFF;
+            --neon-purple: #A855F7;
+            --neon-green: #10B981;
+            --code-bg: #2A2B3D;
+            --code-color: #7CFFC4;
         }
 
         body {
@@ -26,15 +31,34 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             padding-top: 70px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        /* Gradiente suave para o fundo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(54, 209, 220, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+            z-index: -1;
         }
 
         header, footer {
-            background-color: #111;
+            background-color: rgba(10, 11, 20, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         /* Navegação */
         .navbar {
-            background-color: #111 !important;
+            background-color: rgba(10, 11, 20, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
             transition: all 0.3s;
         }
 
@@ -43,16 +67,35 @@
             height: 40px;
             vertical-align: middle;
             margin-left: 8px;
+            filter: drop-shadow(0 0 5px var(--neon-blue));
         }
 
         .nav-link {
             color: #bbb !important;
-            transition: color 0.3s;
+            transition: all 0.3s;
             cursor: pointer;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: all 0.3s;
+            transform: translateX(-50%);
         }
 
         .nav-link:hover, .nav-link.active {
             color: #fff !important;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
         }
 
         .custom-emoji-large {
@@ -60,35 +103,33 @@
             height: 80px;
             vertical-align: middle;
             margin-left: 15px;
+            filter: drop-shadow(0 0 10px var(--neon-purple));
         }
 
         /* Seções */
         .section {
-            background: linear-gradient(
-                -45deg,
-                #000000,
-                #1a1a1a,
-                #2a0030,
-                #330033,
-                #001a33,
-                #0a0a1a,
-                #222222,
-                #000000
-            );
-            background-size: 400% 400%;
-            animation: smoothWave 25s ease infinite;
             position: relative;
             overflow: hidden;
             padding: 100px 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            background: 
+                linear-gradient(135deg, rgba(10, 11, 20, 0.9) 0%, rgba(26, 27, 40, 0.7) 50%, rgba(42, 43, 61, 0.5) 100%),
+                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 30%, rgba(54, 209, 220, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 40%);
+            border-bottom: 1px solid rgba(108, 99, 255, 0.1);
         }
 
-        @keyframes smoothWave {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
+        /* Contêiner das partículas */
+        .particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         .section-content {
@@ -111,32 +152,61 @@
         /* Cards de Funcionalidades */
         .card-feature {
             background-color: var(--card-bg);
-            border: 1px solid #333;
-            transition: all 0.4s;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
             color: var(--light-text);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .card-feature:hover::before {
+            left: 100%;
         }
 
         .card-feature:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            box-shadow: 
+                0 15px 35px rgba(108, 99, 255, 0.2),
+                0 5px 15px rgba(168, 85, 247, 0.1);
             border-color: var(--primary-color);
+        }
+
+        .card-feature img {
+            filter: drop-shadow(0 0 8px currentColor);
         }
 
         /* Cards de Comandos*/
         .command-card {
-            background-color: #1e1e1e;
-            border: 1px solid #444;
+            background-color: rgba(30, 31, 45, 0.9);
+            border: 1px solid rgba(68, 68, 68, 0.3);
             border-left: 4px solid var(--primary-color);
+            border-radius: 15px;
             transition: all 0.3s;
             margin-bottom: 20px;
             color: var(--light-text);
+            backdrop-filter: blur(10px);
         }
 
         .command-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(88, 101, 242, 0.2);
-            border-color: var(--primary-color);
+            box-shadow: 
+                0 10px 25px rgba(108, 99, 255, 0.15),
+                0 5px 15px rgba(54, 209, 220, 0.1);
+            border-color: var(--secondary-color);
         }
 
         .command-card code {
@@ -144,15 +214,20 @@
             color: var(--code-color);
             padding: 4px 10px;
             border-radius: 4px;
-            font-family: 'Courier New', monospace;
+            font-family: 'Cascadia Code', 'Courier New', monospace;
             font-weight: bold;
             display: inline-block;
             margin: 5px 0;
+            border: 1px solid rgba(124, 255, 196, 0.2);
         }
 
         .command-card strong {
             color: #ffffff;
             font-size: 1.1rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .command-card .command-desc {
@@ -172,10 +247,18 @@
             margin-bottom: 15px;
             font-size: 1.1rem;
             color: var(--light-text);
+            padding-left: 10px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .feature-list li:hover, .command-list li:hover {
+            border-left-color: var(--neon-green);
+            padding-left: 15px;
         }
 
         .feature-list strong {
-            color: #ffffff;
+            color: var(--neon-blue);
         }
 
         /* Código */
@@ -184,32 +267,59 @@
             color: var(--code-color);
             padding: 4px 8px;
             border-radius: 6px;
-            font-family: 'Courier New', monospace;
+            font-family: 'Cascadia Code', 'Courier New', monospace;
             font-weight: bold;
+            border: 1px solid rgba(124, 255, 196, 0.2);
         }
 
         /* Botões */
         .btn-primary {
-            background-color: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             border: none;
             padding: 15px 40px;
             font-size: 1.2rem;
             transition: all 0.3s;
+            border-radius: 50px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            background-color: #4752c4;
-            transform: scale(1.05);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
         }
 
         /* Language Switcher */
         #language-switcher {
-            background: #222;
-            border: none;
+            background: rgba(34, 34, 34, 0.8);
+            border: 1px solid rgba(108, 99, 255, 0.3);
             color: white;
             padding: 8px 12px;
             border-radius: 8px;
             margin-right: 15px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        #language-switcher:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(108, 99, 255, 0.2);
         }
 
         /* Music Player */
@@ -220,14 +330,17 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(10, 11, 20, 0.9);
             padding: 10px 15px;
-            border-radius: 10px;
+            border-radius: 15px;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         #music-info {
-            color: #8aa0ff;
+            color: var(--neon-blue);
             font-size: 0.85rem;
             opacity: 0.85;
             text-decoration: none;
@@ -238,7 +351,7 @@
         #music-info:hover {
             opacity: 1;
             color: #b9c7ff;
-            text-shadow: 0 0 10px var(--primary-color);
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
         /* Enter Screen */
@@ -254,7 +367,7 @@
             z-index: 9999;
             cursor: pointer;
             transition: opacity 1s ease;
-            background: #000;
+            background: var(--dark-bg);
         }
 
         #enter-video {
@@ -268,6 +381,7 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
+            opacity: 0.3;
         }
 
         #enter-overlay {
@@ -276,7 +390,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, rgba(10, 11, 20, 0.9), rgba(108, 99, 255, 0.1));
             z-index: 2;
         }
 
@@ -289,16 +403,23 @@
         #enter-text h2 {
             font-size: 3rem;
             text-shadow: 0 0 20px var(--primary-color);
+            background: linear-gradient(90deg, #fff, var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Particles */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
+        /* Títulos */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2.display-2 {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* Responsividade */
@@ -329,16 +450,17 @@
         }
 
         /* Melhorias de legibilidade */
-        h1, h2, h3, h4, h5, h6 {
-            color: #ffffff;
-        }
-
         p, li, span {
             color: #e0e0e0;
+            line-height: 1.7;
         }
 
         .text-muted {
             color: #aaa !important;
+        }
+
+        .opacity-80 {
+            opacity: 0.8;
         }
 
         /* Scroll personalizado */
@@ -347,12 +469,26 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #111;
+            background: rgba(10, 11, 20, 0.5);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
             border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
+        }
+
+        /* Animações */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
@@ -413,9 +549,9 @@
 
     <!-- Home Section -->
     <section id="home" class="section">
-        <div id="particles-js"></div>
+        <div id="particles-js" class="particles-container"></div>
         <div class="container section-content text-center">
-            <h2 class="display-2 fw-bold mb-4" data-aos="fade-up">
+            <h2 class="display-2 fw-bold mb-4 floating" data-aos="fade-up">
                 ARCXNJO AI
                 <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" class="custom-emoji-large">
             </h2>
@@ -436,9 +572,10 @@
 
     <!-- Sobre Section -->
     <section id="sobre" class="section">
+        <div class="particles-container"></div>
         <div class="container section-content">
             <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="about_title">
-                Sobre o ARCXNJO AI <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" alt="blob" class="custom-emoji">
+                Sobre o ARCXNJO AI <img src="https://emoji.discadia.com/emojis/a36fc0b0-2162-4a25-b50e-1bd237cd024c.gif" alt="blob" class="custom-emoji floating">
             </h3>
             
             <div class="row justify-content-center">
@@ -474,6 +611,7 @@
 
     <!-- Funcionalidades Section -->
     <section id="funcionalidades" class="section">
+        <div class="particles-container"></div>
         <div class="container section-content">
             <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="features_title">Funcionalidades Incríveis</h3>
             
@@ -537,6 +675,7 @@
 
     <!-- Comandos Section -->
     <section id="comandos" class="section">
+        <div class="particles-container"></div>
         <div class="container section-content">
             <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="commands_title">Comandos do ARCXNJO AI</h3>
             
@@ -626,6 +765,7 @@
 
     <!-- Contato Section -->
     <section id="contato" class="section">
+        <div class="particles-container"></div>
         <div class="container section-content text-center">
             <h3 class="mb-5 fw-bold text-white" data-aos="fade-up" data-i18n="contact_title">Junte-se à Comunidade</h3>
             
@@ -635,7 +775,7 @@
                 <a href="https://discord.gg/HDWV2EVz" class="text-decoration-none text-info fw-bold">
                     discord.gg/ArcxnjoAICommunity
                 </a>
-                <img src="https://emoji.discadia.com/emojis/71108160-fcff-4ded-894d-56dbbcc43ff8.GIF" alt="blob" class="custom-emoji ms-2">
+                <img src="https://emoji.discadia.com/emojis/71108160-fcff-4ded-894d-56dbbcc43ff8.GIF" alt="blob" class="custom-emoji ms-2 floating">
             </p>
             
             <a href="https://discord.com/oauth2/authorize?client_id=1440555170785394688&permissions=8&scope=bot%20applications.commands"
@@ -685,37 +825,67 @@
             offset: 100 
         });
 
-        // Inicializa Particles.js
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80 },
-                color: { value: "#5865F2" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5 },
-                size: { value: 3 },
-                line_linked: { 
-                    enable: true, 
-                    distance: 150, 
-                    color: "#5865F2", 
-                    opacity: 0.4 
-                },
-                move: { 
-                    enable: true, 
-                    speed: 2 
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { 
-                    onhover: { 
+        // Função para inicializar partículas em um container
+        function initParticles(containerId) {
+            particlesJS(containerId, {
+                particles: {
+                    number: { value: 30 },
+                    color: { value: ["#6C63FF", "#36D1DC", "#A855F7", "#10B981"] },
+                    shape: { type: "circle" },
+                    opacity: { 
+                        value: 0.2,
+                        random: true 
+                    },
+                    size: { 
+                        value: 2,
+                        random: true 
+                    },
+                    line_linked: { 
                         enable: true, 
-                        mode: "repulse" 
-                    } 
+                        distance: 120, 
+                        color: "#6C63FF", 
+                        opacity: 0.1,
+                        width: 1
+                    },
+                    move: { 
+                        enable: true, 
+                        speed: 0.8,
+                        direction: "none",
+                        random: true,
+                        out_mode: "out"
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { 
+                        onhover: { 
+                            enable: true, 
+                            mode: "repulse" 
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        }
+                    }
                 }
-            }
+            });
+        }
+
+        // Inicializar partículas em todos os containers quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar em todas as seções
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const container = section.querySelector('.particles-container');
+                if (container) {
+                    const containerId = `particles-${index}`;
+                    container.id = containerId;
+                    initParticles(containerId);
+                }
+            });
         });
 
-        // Sistema de tradução
+        // Sistema de tradução ATUALIZADO para comandos
         const translations = {
             pt: {
                 inicio: "Início",

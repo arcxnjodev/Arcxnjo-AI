@@ -64,12 +64,31 @@
 
         /* Seções */
         .section {
-            background: none !important;
-            background-image: none !important;
+            background: linear-gradient(
+                -45deg,
+                #000000,
+                #1a1a1a,
+                #2a0030,
+                #330033,
+                #001a33,
+                #0a0a1a,
+                #222222,
+                #000000
+            );
             background-size: 400% 400%;
-            animation: gradientWave 20s ease infinite;
+            animation: smoothWave 25s ease infinite;
             position: relative;
             overflow: hidden;
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes smoothWave {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
         .section-content {
@@ -79,30 +98,14 @@
 
         /* Hero Section */
         #home {
-            background: none !important;
             display: flex;
             align-items: center;
-        }
-
-        /* Sobre Section */
-        #sobre {
-            background: none !important;
-        }
-
-        /* Funcionalidades Section */
-        #funcionalidades {
-            background: none !important;
-
-        /* Comandos Section */
-        #comandos {
-            background: none !important;
         }
 
         /* Contato Section */
         #contato {
             min-height: auto;
-            padding: 40px 0;
-            background: none !important;
+            padding: 80px 0;
         }
 
         /* Cards de Funcionalidades */
@@ -316,6 +319,13 @@
             .command-card {
                 padding: 15px !important;
             }
+            
+            #music-player {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                justify-content: center;
+            }
         }
 
         /* Melhorias de legibilidade */
@@ -344,37 +354,7 @@
             background: var(--primary-color);
             border-radius: 5px;
         }
-        
-        /* - Fundo com efeitos extras */
-        /* PASSO 2A - Fundo animado simples */
-         .section {
-           background: linear-gradient(
-            -45deg,
-            #000000,        /* Preto */
-            #1a1a1a,        /* Cinza muito escuro */
-            #2a0030,        /* Roxo escuro */
-            #330033,        /* Roxo médio */
-            #001a33,        /* Azul escuro */
-            #0a0a1a,        /* Azul muito escuro */
-            #222222,        /* Cinza escuro */
-            #000000         /* Preto */
-        );
-            background-size: 400% 400%;
-            animation: smoothWave 25s ease infinite;
-        }
-
-         @keyframes smoothWave {
-         0% {
-            background-position: 0% 0%;
-        }
-         50% {
-            background-position: 100% 100%;
-        }
-         100% {
-            background-position: 0% 0%;
-        }
-    }   
- </style>
+    </style>
 </head>
 <body>
     
@@ -484,7 +464,6 @@
                         <li data-aos="fade-up" data-aos-delay="800">🛡️ <strong data-i18n="feature8_title">Segurança</strong>: <span data-i18n="feature8_desc">Sem armazenamento de conversas, hospedagem premium e foco em privacidade.</span></li>
                     </ul>
 
-                    <!-- CORREÇÃO AQUI: Adicionei data-aos nesta linha -->
                     <p class="mt-5 fs-5 text-center" data-aos="fade-up" data-aos-delay="900" data-i18n="about_conclusion">
                         O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.
                     </p>
@@ -556,7 +535,7 @@
         </div>
     </section>
 
-    <!-- Comandos Section - CORRIGIDA PARA MELHOR VISIBILIDADE -->
+    <!-- Comandos Section -->
     <section id="comandos" class="section">
         <div class="container section-content">
             <h3 class="text-center mb-5 fw-bold" data-aos="fade-up" data-i18n="commands_title">Comandos do ARCXNJO AI</h3>
@@ -736,23 +715,18 @@
             }
         });
 
-        // Sistema de tradução ATUALIZADO para comandos
+        // Sistema de tradução
         const translations = {
             pt: {
-                // Navbar
                 inicio: "Início",
                 sobre: "Sobre",
                 funcionalidades: "Funcionalidades",
                 comandos: "Comandos",
                 contato: "Contato",
-                
-                // Home
                 enter_text: "Clique para entrar",
                 subtitle: "O assistente IA mais poderoso e divertido para seu servidor Discord e DM'S!",
                 description: "Chat inteligente, geração de imagens, memes, pesquisas e muito mais – com tecnologia de ponta!",
                 invite: "Convidar o Bot Agora",
-                
-                // Sobre
                 about_title: "Sobre o ARCXNJO AI",
                 about_desc1: "O ARCXNJO AI é um bot Discord completo e avançado, criado para transformar qualquer servidor em um espaço inteligente, divertido e altamente interativo.",
                 about_desc2: "Desenvolvido em Python com discord.py, o bot utiliza modelos de IA local via Ollama (como gpt-oss:20b-cloud) para respostas rápidas e privadas, sem enviar dados para servidores externos. Isso garante velocidade, segurança e privacidade total – suas conversas nunca são logadas.",
@@ -774,8 +748,6 @@
                 feature8_title: "Segurança",
                 feature8_desc: "Sem armazenamento de conversas, hospedagem premium e foco em privacidade.",
                 about_conclusion: "O ARCXNJO AI é perfeito para servidores de estudo, programação, diversão ou comunidades grandes – traz inteligência artificial de ponta direto pro seu Discord, de forma segura e divertida.",
-                
-                // Funcionalidades
                 features_title: "Funcionalidades Incríveis",
                 func1_title: "IA Conversacional",
                 func1_desc: "Respostas inteligentes e contextualizadas em tempo real.",
@@ -789,8 +761,6 @@
                 func5_desc: "Player de música, níveis, economia e ferramentas de mod.",
                 func6_title: "Segurança Máxima",
                 func6_desc: "Hospedado em servidores premium, sem rastreamento.",
-                
-                // Comandos - TEXTOS COMPLETOS PARA CADA COMANDO
                 commands_title: "Comandos do ARCXNJO AI",
                 commands_desc: "Aqui estão todos os comandos disponíveis para usuários comuns (sem comandos de administrador).",
                 cmd1_desc: "Conversa com a IA avançada (Grok, GPT-4o, Claude, Flux etc.). Respostas inteligentes e contextualizadas em tempo real.",
@@ -803,30 +773,21 @@
                 cmd7_title: "Reações automáticas",
                 cmd7_desc: "O bot reage com emojis inteligentes às mensagens do servidor (diversão e interação natural).",
                 commands_note: "Todos os comandos são slash commands (/) e funcionam em servidores e DMs!",
-                
-                // Contato
                 contact_title: "Junte-se à Comunidade",
                 contact_support: "Suporte: ",
                 invite_bot: "Adicionar ao Meu Servidor",
-                
-                // Footer
                 footer: "© 2025 ARCXNJO AI – Feito com ❤️ e Inteligência Artificial"
             },
             en: {
-                // Navbar
                 inicio: "Home",
                 sobre: "About",
                 funcionalidades: "Features",
                 comandos: "Commands",
                 contato: "Contact",
-                
-                // Home
                 enter_text: "Click to enter",
                 subtitle: "The most powerful and fun AI assistant for your Discord server and DMs!",
                 description: "Smart chat, image generation, memes, searches and much more – with cutting-edge technology!",
                 invite: "Add the Bot Now",
-                
-                // Sobre
                 about_title: "About ARCXNJO AI",
                 about_desc1: "ARCXNJO AI is a complete and advanced Discord bot, created to transform any server into an intelligent, fun and highly interactive space.",
                 about_desc2: "Developed in Python with discord.py, the bot uses local AI models via Ollama (like gpt-oss:20b-cloud) for fast and private responses, without sending data to external servers. This guarantees speed, security and total privacy – your conversations are never logged.",
@@ -848,8 +809,6 @@
                 feature8_title: "Security",
                 feature8_desc: "No conversation storage, premium hosting and focus on privacy.",
                 about_conclusion: "ARCXNJO AI is perfect for study servers, programming, fun or large communities – brings cutting-edge artificial intelligence directly to your Discord, in a safe and fun way.",
-                
-                // Funcionalidades
                 features_title: "Amazing Features",
                 func1_title: "Conversational AI",
                 func1_desc: "Intelligent and contextual responses in real time.",
@@ -863,8 +822,6 @@
                 func5_desc: "Music player, levels, economy and mod tools.",
                 func6_title: "Maximum Security",
                 func6_desc: "Hosted on premium servers, no tracking.",
-                
-                // Comandos - TEXTOS COMPLETOS EM INGLÊS
                 commands_title: "ARCXNJO AI Commands",
                 commands_desc: "Here are all the commands available for regular users (no admin commands).",
                 cmd1_desc: "Chat with advanced AI (Grok, GPT-4o, Claude, Flux etc.). Intelligent and contextual responses in real time.",
@@ -877,30 +834,21 @@
                 cmd7_title: "Automatic reactions",
                 cmd7_desc: "The bot reacts with smart emojis to server messages (fun and natural interaction).",
                 commands_note: "All commands are slash commands (/) and work in servers and DMs!",
-                
-                // Contato
                 contact_title: "Join the Community",
                 contact_support: "Support: ",
                 invite_bot: "Add to My Server",
-                
-                // Footer
                 footer: "© 2025 ARCXNJO AI – Made with ❤️ and Artificial Intelligence"
             },
             es: {
-                // Navbar
                 inicio: "Inicio",
                 sobre: "Sobre",
                 funcionalidades: "Funcionalidades",
                 comandos: "Comandos",
                 contato: "Contacto",
-                
-                // Home
                 enter_text: "Haz clic para entrar",
                 subtitle: "El asistente IA más poderoso y divertido para tu servidor Discord y DMs!",
                 description: "Chat inteligente, generación de imágenes, memes, búsquedas y mucho más – con tecnología de vanguardia!",
                 invite: "Invitar al Bot Ahora",
-                
-                // Sobre
                 about_title: "Sobre ARCXNJO AI",
                 about_desc1: "ARCXNJO AI es un bot de Discord completo y avanzado, creado para transformar cualquier servidor en un espacio inteligente, divertido y altamente interactivo.",
                 about_desc2: "Desarrollado en Python con discord.py, el bot utiliza modelos de IA local a través de Ollama (como gpt-oss:20b-cloud) para respuestas rápidas y privadas, sin enviar datos a servidores externos. Esto garantiza velocidad, seguridad y privacidad total – tus conversaciones nunca se registran.",
@@ -922,8 +870,6 @@
                 feature8_title: "Seguridad",
                 feature8_desc: "Sin almacenamiento de conversaciones, alojamiento premium y enfoque en la privacidad.",
                 about_conclusion: "ARCXNJO AI es perfecto para servidores de estudio, programación, diversión o comunidades grandes – lleva inteligencia artificial de vanguardia directamente a tu Discord, de forma segura y divertida.",
-                
-                // Funcionalidades
                 features_title: "Funcionalidades Increíbles",
                 func1_title: "IA Conversacional",
                 func1_desc: "Respuestas inteligentes y contextualizadas en tiempo real.",
@@ -937,8 +883,6 @@
                 func5_desc: "Reproductor de música, niveles, economía y herramientas de mod.",
                 func6_title: "Segurança Máxima",
                 func6_desc: "Hospedado en servidores premium, sin rastreo.",
-                
-                // Comandos - TEXTOS COMPLETOS EM ESPANHOL
                 commands_title: "Comandos de ARCXNJO AI",
                 commands_desc: "Aquí están todos los comandos disponibles para usuarios comunes (sin comandos de administrador).",
                 cmd1_desc: "Conversación con IA avanzada (Grok, GPT-4o, Claude, Flux etc.). Respuestas inteligentes y contextualizadas en tiempo real.",
@@ -951,13 +895,9 @@
                 cmd7_title: "Reacciones automáticas",
                 cmd7_desc: "El bot reacciona con emojis inteligentes a los mensajes del servidor (diversión e interacción natural).",
                 commands_note: "Todos los comandos son slash commands (/) y funcionan en servidores y DMs!",
-                
-                // Contato
                 contact_title: "Únete a la Comunidad",
                 contact_support: "Soporte: ",
                 invite_bot: "Añadir al Servidor",
-                
-                // Footer
                 footer: "© 2025 ARCXNJO AI – Hecho con ❤️ e Inteligencia Artificial"
             }
         };
@@ -1075,11 +1015,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-

@@ -34,7 +34,7 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
-        /* Gradiente suave para o fundo */
+        /* Gradiente suave para o fundo - AGORA CONTÍNUO */
         body::before {
             content: '';
             position: fixed;
@@ -45,10 +45,13 @@
             background: 
                 radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(54, 209, 220, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+                linear-gradient(180deg, #0A0B14 0%, #1A1B28 100%);
             z-index: -1;
         }
 
+        /* REMOVI o gradiente específico de body */
+        
         header, footer {
             background-color: rgba(10, 11, 20, 0.95);
             backdrop-filter: blur(10px);
@@ -106,20 +109,33 @@
             filter: drop-shadow(0 0 10px var(--neon-purple));
         }
 
-        /* Seções */
+        /* Seções - AGORA SEM BORDAS E TRANSIÇÃO SUAVE */
         .section {
             position: relative;
             overflow: hidden;
-            padding: 100px 0;
+            padding: 120px 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: 
-                linear-gradient(135deg, rgba(10, 11, 20, 0.9) 0%, rgba(26, 27, 40, 0.7) 50%, rgba(42, 43, 61, 0.5) 100%),
-                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 30%, rgba(54, 209, 220, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 40%);
-            border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+            /* REMOVI a border-bottom e gradientes separados */
+            /* Apenas um leve overlay escuro para profundidade */
+            background: rgba(10, 11, 20, 0.7);
+        }
+
+        /* Adicionando um efeito sutil de transição entre seções */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(108, 99, 255, 0.1) 20%, 
+                rgba(108, 99, 255, 0.3) 50%, 
+                rgba(108, 99, 255, 0.1) 80%, 
+                transparent 100%);
         }
 
         /* Contêiner das partículas */
@@ -130,6 +146,7 @@
             top: 0;
             left: 0;
             z-index: 1;
+            opacity: 0.4;
         }
 
         .section-content {
@@ -137,16 +154,24 @@
             z-index: 2;
         }
 
-        /* Hero Section */
+        /* Hero Section - Um pouco mais de destaque */
         #home {
             display: flex;
             align-items: center;
+            padding-top: 150px;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 11, 20, 0.9) 0%,
+                rgba(26, 27, 40, 0.6) 50%,
+                rgba(10, 11, 20, 0.9) 100%
+            );
         }
 
         /* Contato Section */
         #contato {
             min-height: auto;
-            padding: 80px 0;
+            padding: 100px 0;
+            background: rgba(10, 11, 20, 0.8);
         }
 
         /* Cards de Funcionalidades */
@@ -447,6 +472,10 @@
                 right: 10px;
                 justify-content: center;
             }
+            
+            #home {
+                padding-top: 120px;
+            }
         }
 
         /* Melhorias de legibilidade */
@@ -489,6 +518,15 @@
 
         .floating {
             animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Efeito sutil de brilho no hover dos elementos */
+        .card-feature, .command-card, .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .card-feature:hover, .command-card:hover {
+            box-shadow: 0 0 30px rgba(108, 99, 255, 0.15);
         }
     </style>
 </head>
@@ -549,7 +587,7 @@
 
     <!-- Home Section -->
     <section id="home" class="section">
-        <div id="particles-js" class="particles-container"></div>
+        <div class="particles-container"></div>
         <div class="container section-content text-center">
             <h2 class="display-2 fw-bold mb-4 floating" data-aos="fade-up">
                 ARCXNJO AI
@@ -829,11 +867,11 @@
         function initParticles(containerId) {
             particlesJS(containerId, {
                 particles: {
-                    number: { value: 30 },
+                    number: { value: 25 },
                     color: { value: ["#6C63FF", "#36D1DC", "#A855F7", "#10B981"] },
                     shape: { type: "circle" },
                     opacity: { 
-                        value: 0.2,
+                        value: 0.15,
                         random: true 
                     },
                     size: { 
@@ -842,14 +880,14 @@
                     },
                     line_linked: { 
                         enable: true, 
-                        distance: 120, 
+                        distance: 150, 
                         color: "#6C63FF", 
-                        opacity: 0.1,
+                        opacity: 0.08,
                         width: 1
                     },
                     move: { 
                         enable: true, 
-                        speed: 0.8,
+                        speed: 0.5,
                         direction: "none",
                         random: true,
                         out_mode: "out"
@@ -885,7 +923,7 @@
             });
         });
 
-        // Sistema de tradução ATUALIZADO para comandos
+        // Sistema de tradução
         const translations = {
             pt: {
                 inicio: "Início",
@@ -1064,7 +1102,7 @@
                 cmd6_desc: "Envía archivos (código, documentos, imágenes hasta 100MB, videos hasta 30MB) y el bot los analiza automáticamente (explica código, describe imágenes/videos).",
                 cmd7_title: "Reacciones automáticas",
                 cmd7_desc: "El bot reacciona con emojis inteligentes a los mensajes del servidor (diversión e interacción natural).",
-                commands_note: "Todos los comandos son slash commands (/) y funcionan en servidores y DMs!",
+                commands_note: "Todos los comandos são slash commands (/) e funcionam en servidores e DMs!",
                 contact_title: "Únete a la Comunidad",
                 contact_support: "Soporte: ",
                 invite_bot: "Añadir al Servidor",
